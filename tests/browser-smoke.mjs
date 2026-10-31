@@ -41,6 +41,7 @@ try {
       const metrics = await page.evaluate(() => ({
         document: document.documentElement.scrollWidth,
         viewport: window.innerWidth,
+        pricingRegion: (()=>{const e=document.querySelector('.domain-price-section .domain-price-table'); const c=e?.closest('.container'); const section=e?.closest('section'); return e?{regionWidth:e.getBoundingClientRect().width,regionScrollWidth:e.scrollWidth,containerWidth:c?.getBoundingClientRect().width,sectionWidth:section?.getBoundingClientRect().width,sectionOverflow:getComputedStyle(section).overflowX}:null;})(),
         sectionImpact: Array.from(document.querySelectorAll('main section')).map(section => {
           const original=section.style.display;
           const before=document.documentElement.scrollWidth;
