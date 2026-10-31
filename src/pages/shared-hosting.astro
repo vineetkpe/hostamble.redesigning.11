@@ -8,8 +8,9 @@ import FeatureCards from '../components/FeatureCards.astro';
 import InfoSplit from '../components/InfoSplit.astro';
 import StepsSection from '../components/StepsSection.astro';
 import FAQSection from '../components/FAQSection.astro';
+import MigrationSection from '../components/MigrationSection.astro';
 ---
-<BaseLayout title="Shared Web Hosting Plans | Hostamble" description="Explore Hostamble shared hosting plans, cPanel, SSD storage, bandwidth limits, billing periods, and getting your first website online.">
+<BaseLayout title="Shared Web Hosting Plans | Hostamble" description="Explore Hostamble shared hosting plans, cPanel, NVMe SSD storage, bandwidth limits, billing periods, and getting your first website online.">
   <PageHero eyebrow="SHARED HOSTING" title="Your first website deserves a great home." description="A straightforward starting point for portfolios, blogs, and growing business sites. Compare the essentials and move at your own pace." icon="▦" />
   <FeatureCards
     eyebrow="THE EVERYDAY ESSENTIALS"
@@ -20,10 +21,10 @@ import FAQSection from '../components/FAQSection.astro';
     items={[
       {tag:'01 / STORAGE',symbol:'▦',title:'Space for your files',text:'The published shared plans list 4 GB to 25 GB of SSD storage, depending on the tier you select.'},
       {tag:'02 / TOOLS',symbol:'⌘',title:'Familiar cPanel access',text:'Manage common hosting tasks through cPanel on the listed shared hosting plans.'},
-      {tag:'03 / PROTECTION',symbol:'✓',title:'SSL and backups',text:'SSL and JetBackup appear in the listed plans. Check current backup retention and restoration terms before ordering.'}
+      {tag:'03 / PROTECTION',symbol:'✓',title:'SSL and backups',text:'Shared Hosting includes SSL, LiteSpeed, Imunify360, and automatic daily JetBackup backups retained for three days.'}
     ]}
   />
-  <PricingGrid family="shared" heading="Find your kind of hosting." description="Compare explicit monthly, quarterly, semiannual, and annual totals. Your WHMCS checkout confirms the final charge and plan details."/>
+  <PricingGrid family="shared" heading="Find your kind of hosting." description="Compare explicit monthly, quarterly, semiannual, and annual totals. Check the final plan details and total at checkout."/>
   <InfoSplit
     eyebrow="PICK YOUR FIT"
     title="Start small."
@@ -43,7 +44,7 @@ import FAQSection from '../components/FAQSection.astro';
     accent="your new website."
     description="A sensible route from choosing a plan to checking that your website is ready to share."
     steps={[
-      {title:'Review your plan',text:'Compare site allowances, storage, bandwidth and billing-period totals. Confirm final details in WHMCS.'},
+      {title:'Review your plan',text:'Compare site allowances, storage, bandwidth and billing-period totals. Check the details in your client area before ordering.'},
       {title:'Connect a domain',text:'Use a domain you already own or search for a new name and check live availability.'},
       {title:'Publish and check',text:'Follow the hosting setup details, upload your site or install your software, and test your pages and SSL.'}
     ]}
@@ -60,9 +61,12 @@ import FAQSection from '../components/FAQSection.astro';
       {question:'Is SSL included?',answer:'The published shared plan descriptions list free SSL certificates. Check service activation instructions and coverage for your domain.'},
       {question:'How is the six-month offer applied?',answer:'Get a free .us.cc domain with semiannual hosting. Ask support how to receive the offer before ordering.'},
       {question:'Can I compare the full billing totals?',answer:'Yes. Select Monthly, 3 months, 6 months, or Yearly above to see the corresponding published total in Indian rupees. Checkout remains the final billing authority.'},
-      {question:'Where can I get help with account access?',answer:'Use Hostamble’s existing client area for account management or visit the support page for help options.'}
+      {question:'Where can I get help with account access?',answer:'Use Hostamble’s existing client area for account management or visit the support page for help options.'},
+      {question:'How long are backups kept?',answer:'Automatic daily JetBackup backups on Shared Hosting are retained for three days. Contact support about restoration.'},
+      {question:'Is my existing hosting eligible for free migration?',answer:'Free cPanel-to-cPanel migration is available on Shared Hosting. Ask support to check your current account and help arrange the migration.'}
     ]}
   />
+  <MigrationSection product="shared" />
   <DomainSearch compact />
   <ContactCTA title="Ready to give your website a home?" text="Compare your options, search for a domain, or ask the team about the right shared hosting plan."/>
 </BaseLayout>
