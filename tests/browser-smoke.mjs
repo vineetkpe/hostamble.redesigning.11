@@ -41,6 +41,14 @@ try {
       const metrics = await page.evaluate(() => ({
         document: document.documentElement.scrollWidth,
         viewport: window.innerWidth,
+        sectionImpact: Array.from(document.querySelectorAll('main section')).map(section => {
+          const original=section.style.display;
+          const before=document.documentElement.scrollWidth;
+          section.style.display='none';
+          const after=document.documentElement.scrollWidth;
+          section.style.display=original;
+          return {name:section.className,reduce:before-after,after};
+        }).filter(x=>x.reduce>0).sort((a,b)=>b.reduce-a.reduce).slice(0,8),
         offenders: Array.from(document.querySelectorAll('body *')).map(el => {
           const r=el.getBoundingClientRect();
           return {tag:el.tagName.toLowerCase(),cls:typeof el.className==='string'?el.className.slice(0,80):'',left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};
