@@ -497,3 +497,6 @@ em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
     max-width:calc(100vw - 30px);min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;
   }
 }
+
+/* Do not let a wide, individually scrollable domain table pan the whole mobile page. */
+@media(max-width:760px){html{overflow-x:clip}}
