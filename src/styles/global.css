@@ -347,3 +347,8 @@ em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
 @media(prefers-reduced-motion: reduce) {
   .announcement-line span { animation: none !important; }
 }
+
+@media(max-width:760px) {
+  /* There is no space for the small announcement pause control on phones, so keep the announcement entirely static. */
+  .announcement-line span { animation: none !important; transform: none !important; }
+}

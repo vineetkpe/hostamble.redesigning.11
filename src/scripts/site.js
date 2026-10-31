@@ -9,7 +9,7 @@ if (canUseUsd) {
   try { currency = localStorage.getItem('hostamble-currency') === 'USD' ? 'USD' : 'INR'; } catch {}
 }
 const periodText = {monthly:'monthly', quarterly:'quarterly',semiannual:'every 6 months',annual:'annually'};
-function renderPrices() {
+function renderPrices(announce = false) {
   document.querySelectorAll('[data-pricing]').forEach(section => {
     const active = section.querySelector('[data-cycle][aria-pressed="true"]')?.dataset.cycle || 'monthly';
     section.querySelectorAll('[data-price]').forEach(node => {
@@ -18,6 +18,10 @@ function renderPrices() {
     section.querySelectorAll('[data-price-period]').forEach(node => node.textContent = ' / ' + (BILLING_CYCLES[active] || 'month'));
     section.querySelectorAll('[data-total-note]').forEach(node => node.textContent = 'Billed ' + (periodText[active] || 'monthly') + ' in INR');
     section.querySelectorAll('[data-currency-note]').forEach(node => node.textContent = currency === 'USD' ? 'Approximate USD price. Checkout charged in INR. Taxes and final charges are confirmed there.' : 'Prices in INR. Final checkout price and applicable taxes are confirmed in WHMCS.');
+    if (announce) {
+      const status = section.querySelector('[data-price-status]');
+      if (status) status.textContent = 'Showing ' + (periodText[active] || 'monthly') + ' prices in ' + (currency === 'USD' ? 'approximate US dollars; checkout in Indian rupees' : 'Indian rupees') + '.';
+    }
   });
   document.querySelectorAll('[data-currency]').forEach(button => {
     button.disabled = button.dataset.currency === 'USD' && !canUseUsd;
@@ -39,14 +43,14 @@ document.querySelectorAll('[data-pricing]').forEach(section => {
       b.setAttribute('aria-pressed',String(selected));
       b.classList.toggle('active',selected);
     });
-    renderPrices();
+    renderPrices(true);
   }));
 });
 document.querySelectorAll('[data-currency]').forEach(button => button.addEventListener('click',() => {
   if (button.dataset.currency === 'USD' && !canUseUsd) return;
   currency = button.dataset.currency;
   try { localStorage.setItem('hostamble-currency',currency); } catch {}
-  renderPrices();
+  renderPrices(true);
 }));
 for (const [containerSelector,buttonSelector] of [['[data-ribbon]','[data-ribbon-toggle]'],['[data-ticker]','[data-ticker-toggle]']]) {
   document.querySelectorAll(containerSelector).forEach(container => {

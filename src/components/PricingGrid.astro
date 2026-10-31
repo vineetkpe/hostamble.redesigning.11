@@ -18,6 +18,7 @@ const initialCycle = 'monthly' as const;
         {product.cycles.map(cycle => <button type="button" data-cycle={cycle} aria-pressed={cycle === initialCycle} class:list={[cycle === initialCycle && 'active']}>{cycle === 'semiannual' ? '6 months' : cycle === 'quarterly' ? '3 months' : cycle === 'annual' ? 'Yearly' : 'Monthly'}</button>)}
       </div>
       <p class="currency-note" data-currency-note>Prices in INR. Final checkout price and applicable taxes are confirmed in WHMCS.</p>
+      <p class="sr-only" data-price-status aria-live="polite" aria-atomic="true"></p>
     </div>
     <div class:list={['plans-grid',product.plans.length === 4 && 'plans-grid-four']}>
       {product.plans.map(plan => <article class:list={['plan-card',plan.featured && 'plan-featured']}>
