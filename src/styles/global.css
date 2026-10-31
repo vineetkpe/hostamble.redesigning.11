@@ -445,3 +445,39 @@ em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
 @media(prefers-reduced-motion:reduce) {
   .chooser-card,.spotlight-card { transition:none; }
 }
+
+/* Content-only updates using the existing palette, fonts and component layouts. */
+.pricing-offer-banner {
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  background:#e9f4dc;border:1px solid #b7db9a;border-radius:20px;
+  padding:16px 22px;margin:0 0 22px;
+}
+.pricing-offer-banner p{font-size:.91rem;line-height:1.5;color:var(--navy);margin:0}
+.pricing-offer-action{flex-shrink:0;min-height:44px;padding:10px 18px;font-size:.77rem}
+.domain-ticker .ticker-set{align-items:stretch;gap:14px}
+.domain-rate-card {
+  flex:0 0 186px;display:flex;flex-direction:column;justify-content:center;
+  align-items:flex-start;gap:7px;min-width:186px;min-height:115px;
+  padding:14px 16px;border:1px solid #84b76f;border-radius:16px;
+  background:#e6ffd1;color:var(--navy)
+}
+.domain-rate-card b{font-size:1.8rem;line-height:1.1;letter-spacing:-.05em}
+.domain-rate-card span{font-size:.72rem;white-space:nowrap;margin:0;opacity:1}
+.domain-rate-card strong{font-size:.74rem;font-weight:850}
+.domain-ticker:hover .ticker-runner,
+.domain-ticker:focus-within .ticker-runner{animation-play-state:paused}
+.domain-ticker .ticker-runner{gap:0}
+.support-availability{font-size:.88rem;color:var(--muted);line-height:1.75;max-width:900px}
+@media(max-width:760px){
+ .pricing-offer-banner{flex-direction:column;align-items:stretch;padding:16px}
+ .pricing-offer-action{width:100%}
+ .domain-ticker{overflow-x:auto;scrollbar-width:thin}
+ .domain-ticker .ticker-runner{animation:none}
+ .domain-ticker .ticker-set[aria-hidden="true"]{display:none}
+ .domain-ticker .domain-rate-card{min-width:186px}
+}
+@media(prefers-reduced-motion:reduce){
+ .domain-ticker{overflow-x:auto;scrollbar-width:thin}
+ .domain-ticker .ticker-runner{animation:none!important}
+ .domain-ticker .ticker-set[aria-hidden="true"]{display:none}
+}

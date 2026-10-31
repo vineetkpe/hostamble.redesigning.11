@@ -41,3 +41,32 @@ for (const page of productPages) {
 console.log('Homepage: ' + homeCount + ' sections');
 
 console.log('Static assets, section counts and preview protections passed');
+
+const productHtml=Object.fromEntries(productPages.map(path=>[path,readFileSync(resolve(dist,path),'utf8')]));
+const siteScript=readFileSync(resolve('src/scripts/site.js'),'utf8');
+const catalog=JSON.parse(readFileSync(resolve('src/data/catalog.json'),'utf8'));
+assert(home.includes('Get a free .us.cc domain with semiannual hosting.'),'Offer banner text missing');
+assert(home.includes('data-select-semiannual'),'Offer CTA missing');
+assert(siteScript.includes("selectBillingCycle(section, 'semiannual', true)"),'Offer selector not wired');
+assert(home.indexOf('pricing-offer-banner')<home.indexOf('class="plans-grid'),'Offer must appear above hosting cards');
+assert(home.includes('name="query"') && home.includes('name="domain" value="register"') && home.includes('name="a" value="add"'),'Domain handoff fields missing');
+for (const [path,html] of Object.entries(productHtml)) {
+  assert(!html.includes('WHMCS'),'Technical billing language exposed in '+path);
+}
+for (const path of ['shared-hosting/index.html','wordpress-hosting/index.html']) {
+  const html=productHtml[path];
+  assert(html.includes('NVMe SSD') && html.includes('LiteSpeed') && html.includes('Imunify360'),'Hosting technology missing on '+path);
+  assert(html.includes('Daily JetBackup') && html.includes('three days'),'Backup retention missing on '+path);
+  assert(html.includes('cPanel-to-cPanel migration'),'Migration information missing on '+path);
+}
+for (const item of catalog.domains) {
+  assert(home.includes('data-domain-money="'+item.registerPaise+'"'),'Missing registration card price for '+item.tld);
+  assert(home.includes('data-domain-money="'+item.renewPaise+'"'),'Missing renewal card price for '+item.tld);
+}
+const support=readFileSync(resolve(dist,'support/index.html'),'utf8');
+for(const label of ['Monday','Saturday','9 AM','8 PM','24/7','12 hours']){
+  assert(support.includes(label),'Missing support availability detail '+label);
+}
+assert(home.includes('https://www.hostamble.com/refund-and-cancellation-policy'),'Verified refund link missing');
+assert(!home.includes('href="https://www.hostamble.com/legal-agreement"'),'Unverified terms link exposed');
+console.log('Offer, hosting, renewal-rate, support, migration and policy checks passed');

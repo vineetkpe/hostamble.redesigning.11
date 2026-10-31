@@ -1,0 +1,21 @@
+---
+interface Props { product?: 'shared' | 'wordpress'; }
+const {product='shared'} = Astro.props as Props;
+---
+<section class="promo-section section-pad" id="migration" aria-label="Free hosting migration">
+  <div class="container">
+    <div class="promo-grid">
+      <div class="promo-art" aria-hidden="true">
+        <span class="promo-orbit">✳</span>
+        <div class="promo-domain">cPanel <span>→ cPanel</span></div>
+        <div class="promo-badge">MIGRATION ↗</div>
+      </div>
+      <div>
+        <span class="eyebrow"><span class="eyebrow-line"></span> WE CAN HELP YOU MOVE</span>
+        <h2>Bring your website <em>along for the journey.</em></h2>
+        <p>Free cPanel-to-cPanel migration is available on Shared and WordPress hosting. Contact support to check your current account and arrange the move.</p>
+        <a class="button button-dark" href="/support">Ask about migration ↗</a>
+      </div>
+    </div>
+  </div>
+</section>

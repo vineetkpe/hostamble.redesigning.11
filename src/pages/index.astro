@@ -8,10 +8,11 @@ import ContactCTA from '../components/ContactCTA.astro';
 import StepsSection from '../components/StepsSection.astro';
 import ServiceChooser from '../components/ServiceChooser.astro';
 import FAQSection from '../components/FAQSection.astro';
+import MigrationSection from '../components/MigrationSection.astro';
 ---
 <BaseLayout title="Hostamble — Make room for your next big idea" description="Bring your ideas online with shared hosting, WordPress hosting, domains, business email, and VPS options from Hostamble.">
   <Hero />
-  <div class="trust-strip"><div class="container"><span>THE LITTLE THINGS MATTER</span><span>✳ cPanel on listed shared plans</span><span>✳ SSL included</span><span>✳ Backup tools</span><span>✳ Domain discovery</span></div></div>
+  <div class="trust-strip"><div class="container"><span>THE LITTLE THINGS MATTER</span><span>✳ NVMe SSD &amp; LiteSpeed</span><span>✳ SSL &amp; Imunify360</span><span>✳ Daily JetBackup · 3 days</span><span>✳ cPanel</span></div></div>
   <ProductGrid />
   <DomainSearch />
   <StepsSection
@@ -28,13 +29,10 @@ import FAQSection from '../components/FAQSection.astro';
     actionLabel="Explore getting-started guides"
   />
   <PricingGrid family="shared" eyebrow="PLANS THAT MAKE SENSE" heading="More value. Less figuring things out." description="Start with the space you need. Compare plans and take the next step at Hostamble's secure checkout."/>
-  <section class="promo-section section-pad"><div class="container"><div class="promo-grid">
-    <div class="promo-art" aria-hidden="true"><span class="promo-orbit">✳</span><div class="promo-domain">youridea<span>.us.cc</span></div><div class="promo-badge">A LITTLE BONUS ↗</div></div>
-    <div><span class="eyebrow"><span class="eyebrow-line"></span> MAKE IT YOURS</span><h2>Even more reasons to <em>launch that idea.</em></h2><p>Look out for Hostamble's .US.CC domain promotion with eligible semiannual hosting. Promotion terms and domain eligibility are confirmed at checkout.</p><a class="button button-dark" href="/shared-hosting">See hosting options ↗</a></div>
-  </div></div></section>
+  <MigrationSection />
   <section class="value-section section-pad"><div class="container"><div class="section-intro"><span class="eyebrow"><span class="eyebrow-line"></span> BUILT AROUND YOU</span><h2>Less hosting jargon. <em>More getting things done.</em></h2></div><div class="value-grid">
     <article><span class="value-icon">01 ✳</span><h3>Get online faster</h3><p>From finding your name to choosing your hosting, everything begins with a clear next step.</p></article>
-    <article><span class="value-icon">02 ◇</span><h3>Tools that make sense</h3><p>Selected shared hosting plans include familiar cPanel access, SSL, and backup tools.</p></article>
+    <article><span class="value-icon">02 ◇</span><h3>Tools that make sense</h3><p>Shared and WordPress hosting include NVMe SSD, LiteSpeed, Imunify360 and daily JetBackup backups retained for three days.</p></article>
     <article><span class="value-icon">03 ↗</span><h3>Grow at your pace</h3><p>Start with a single website, explore WordPress, or enquire about a VPS when you're ready.</p></article>
   </div></div></section>
   <ServiceChooser />
@@ -47,7 +45,9 @@ import FAQSection from '../components/FAQSection.astro';
       {question:'Can I start with just a domain?',answer:'Yes. Search a domain and continue to Hostamble’s domain registration checkout. Availability, promotional rules, and final charges are shown there.'},
       {question:'What if I want to use WordPress?',answer:'Explore the dedicated WordPress hosting plans and compare monthly or annual totals. Current service specifications should be confirmed at checkout.'},
       {question:'Does choosing a billing cycle change the total?',answer:'Yes. The pricing selector shows the explicit total for each published billing period; it does not calculate or promise discounts.'},
-      {question:'Where do I manage my services?',answer:'Hostamble’s existing client area handles account and billing management. Use the Log in link in the navigation.'}
+      {question:'Where do I manage my services?',answer:'Hostamble’s existing client area handles account and billing management. Use the Log in link in the navigation.'},
+      {question:'How long are daily backups kept?',answer:'Automatic daily JetBackup backups on Shared and WordPress hosting are retained for the last three days.'},
+      {question:'Is migration included?',answer:'Free cPanel-to-cPanel migration is offered with Shared and WordPress hosting. Contact support to check your current account and migration eligibility.'}
     ]}
   />
   <ContactCTA />

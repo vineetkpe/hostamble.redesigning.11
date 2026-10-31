@@ -1,14 +1,14 @@
 name: Validate redesign
 on:
   push:
-    branches: [feat/hostamble-astro-redesign, main]
+    branches: [feat/hostamble-astro-redesign, fix/hosting-content-offer, main]
   pull_request:
     branches: [main]
 permissions:
   contents: write
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -36,6 +36,22 @@ jobs:
           PUBLIC_SITE_STAGE: preview
       - name: Verify built files and preview protections
         run: npm run verify:build
+      - name: Install browser smoke dependencies
+        run: |
+          npm install --no-save --package-lock=false playwright@1.58.0
+          if ! command -v google-chrome >/dev/null 2>&1; then
+            npx playwright install --with-deps chromium
+            echo "CHROME_BIN=$HOME/.cache/ms-playwright/chromium-*/chrome-linux/chrome" >> "$GITHUB_ENV"
+          fi
+      - name: Browser and mobile smoke tests
+        run: node tests/browser-smoke.mjs
+      - name: Keep browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hostamble-browser-review
+          path: .browser-artifacts/
+          if-no-files-found: ignore
       - name: Commit resolved dependency lockfile (feature branch)
         if: github.event_name == 'push' && github.ref_name == 'feat/hostamble-astro-redesign'
         run: |

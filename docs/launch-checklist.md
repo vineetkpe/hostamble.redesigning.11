@@ -42,3 +42,15 @@ This file is internal workflow documentation and should **not** be exposed as pu
 ## Source checks
 
 Consult `docs/source-notes.md` for where provisional values came from. Recheck all commercial facts on launch day.
+
+## Content-only update audit — 1 November 2026
+
+- [x] Confirmed .com, .in, .online, .site first-year and renewal figures against published domain pricing: https://hostamble.com/dash/index.php/domain/pricing (web-cached table, may change before release).
+- [x] Confirmed shared marketing page lists Basic ₹49, Starter ₹99, Elite ₹149 monthly, with six-month totals ₹294, ₹594, ₹894; these match the existing catalog at https://www.hostamble.com/shared-hosting.
+- [x] Confirmed WordPress store (https://hostamble.com/dash/index.php?rp=/store/wordpresshosting) includes Starter/Essential/Growth/Prime at ₹59/₹99/₹139/₹179 monthly in its published listings.
+- [ ] Compare **all exact plan IDs and billing cycles inside a live billing session**. The storefront also exposes a different cPanel product family (PERSONAL/STARTUP/PREMIUM/BUSINESS), older public pages disagree on shared prices and WordPress Growth annual ₹1168 differs from a straight 12-month multiple. Do not change catalog prices or remove the mismatch disclaimer until resolved.
+- [ ] Confirm that the live billing templates have been updated from "BitNinja"/"weekly backup" references to the owner's supplied current Imunify360/daily three-day backup facts. The redesigned marketing copy uses the owner's current specifications.
+- [x] Added verified refund policy link: https://www.hostamble.com/refund-and-cancellation-policy.
+- [ ] Terms and privacy URLs could not be independently verified as live, and no Hostamble SLA document was located. Footer links to local /legal and the verified refund policy only; do not add invented external links.
+- [ ] Verify actual handling of the free .us.cc semiannual offer in checkout; banner makes no extra eligibility/renewal commitments.
+- [ ] Live WHMCS domain search and billing flow should be smoke-tested by the account owner without placing unintended orders.

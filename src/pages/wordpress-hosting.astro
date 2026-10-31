@@ -8,6 +8,7 @@ import FeatureCards from '../components/FeatureCards.astro';
 import StepsSection from '../components/StepsSection.astro';
 import FAQSection from '../components/FAQSection.astro';
 import DomainSearch from '../components/DomainSearch.astro';
+import MigrationSection from '../components/MigrationSection.astro';
 ---
 <BaseLayout title="WordPress Hosting Plans | Hostamble" description="Find Hostamble WordPress hosting plans, compare monthly and annual totals, discover the essentials, and get ready to launch a WordPress website.">
   <PageHero eyebrow="WORDPRESS HOSTING" title="Make something wonderful with WordPress." description="From your first article to an entire brand website, bring your ideas to life with plans for WordPress projects." icon="W" />
@@ -24,17 +25,17 @@ import DomainSearch from '../components/DomainSearch.astro';
     href="#pricing"
     actionLabel="View WordPress plans"
   />
-  <PricingGrid family="wordpress" heading="A WordPress plan with your name on it." description="Choose monthly or annual billing and review the listed plan features. Some older pages disagree on limits, so the final WHMCS details take priority."/>
+  <PricingGrid family="wordpress" heading="A WordPress plan with your name on it." description="Choose monthly or annual billing and review the listed plan features. Please check the current plan details and final price before ordering."/>
   <FeatureCards
     eyebrow="PRACTICAL BUILDING BLOCKS"
     title="Spend less time comparing,"
     accent="more time creating."
-    description="These are features listed in the provisional WordPress catalog, not promises of performance or a particular restoration period."
+    description="WordPress plans include NVMe SSD, LiteSpeed, Imunify360 and daily JetBackup backups retained for three days."
     tone="cream"
     items={[
       {tag:'01 / CONTENT',symbol:'W',title:'Your publishing space',text:'Choose from Starter, Essential, Growth or Prime based on the published number of domains and storage allocation.'},
       {tag:'02 / SSL',symbol:'✓',title:'An SSL starting point',text:'SSL is listed across the WordPress plans. Confirm installation and renewal details for your domain.'},
-      {tag:'03 / BACKUPS',symbol:'↺',title:'Backup and security tools',text:'JetBackup 5 and BitNinja appear in the provisional specifications. Check which services and policies apply to your plan.'}
+      {tag:'03 / BACKUPS',symbol:'↺',title:'Backup and security tools',text:'Imunify360 security and automatic daily JetBackup backups are included; backups are kept for three days.'}
     ]}
   />
   <StepsSection
@@ -42,7 +43,7 @@ import DomainSearch from '../components/DomainSearch.astro';
     title="One step closer to"
     accent="publish day."
     steps={[
-      {title:'Choose your plan',text:'Compare the number of domains, listed SSD storage, email accounts and billing totals.'},
+      {title:'Choose your plan',text:'Compare the number of domains, listed NVMe SSD storage, email accounts and billing totals.'},
       {title:'Choose your domain',text:'Connect an existing name or check availability for a new one through Hostamble’s domain search.'},
       {title:'Prepare WordPress',text:'Follow your hosting account’s setup instructions and confirm WordPress, theme and plugin compatibility.'},
       {title:'Review before launch',text:'Test your site on mobile, check links and forms, and verify SSL and backup options.'}
@@ -59,9 +60,11 @@ import DomainSearch from '../components/DomainSearch.astro';
       {question:'What is the difference between WordPress and shared hosting?',answer:'WordPress is the software used to manage content. Shared hosting describes the hosting environment. A WordPress-focused plan may bundle features relevant to those sites; verify the actual offerings in checkout.'},
       {question:'Can I use my own domain?',answer:'A domain is required to reach your site. Ask Hostamble support about connecting an existing domain or search for a new registration.'},
       {question:'Why does the Growth annual total look different?',answer:'The provisional catalog lists ₹139 monthly and ₹1,168 annually for Growth. This mismatch requires confirmation; we do not calculate or advertise a saving from it.'},
-      {question:'Do the plans guarantee automatic backups?',answer:'Backup tools are listed, but the frequency, retention window and recovery terms need confirmation with Hostamble support.'}
+      {question:'Do the plans guarantee automatic backups?',answer:'Automatic JetBackup backups are taken daily and retained for three days on WordPress Hosting. Ask support about restoration.'},
+      {question:'Can Hostamble migrate my WordPress website?',answer:'Free cPanel-to-cPanel migration is available on WordPress Hosting when moving from a compatible cPanel account. Contact support to check your migration needs.'}
     ]}
   />
+  <MigrationSection product="wordpress" />
   <DomainSearch compact />
   <ContactCTA title="Your next WordPress site starts here." text="Pick a starting plan, explore a new domain name, or ask about setup and migration details."/>
 </BaseLayout>
