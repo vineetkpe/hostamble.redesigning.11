@@ -523,3 +523,7 @@ em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
 .journey-dark .journey-steps li { background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.3); }
 .journey-dark .journey-head p,.journey-dark .journey-steps p { color: var(--ivory); }
 .mini-square { color: var(--ivory); }
+
+/* Final AA contrast fixes from rendered browser audit. */
+.popular-tag { background: var(--clay); color: var(--white); }
+.brand-footer .brand-dot { color: var(--ivory); }
