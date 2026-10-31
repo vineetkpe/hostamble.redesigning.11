@@ -1,10 +1,12 @@
 ---
 import catalog from '../data/catalog.json';
 import {formatINR,BILLING_CYCLES} from '../lib/pricing.mjs';
-const { family = 'shared', heading = 'A plan for every possibility', eyebrow = 'SIMPLE PRICING', description = 'Choose the space that fits today. Every listed price comes from one catalog.' } = Astro.props;
+type Family = 'shared' | 'wordpress';
+interface Props { family?: Family; heading?: string; eyebrow?: string; description?: string; }
+const { family = 'shared', heading = 'A plan for every possibility', eyebrow = 'SIMPLE PRICING', description = 'Choose the space that fits today. Every listed price comes from one catalog.' } = Astro.props as Props;
 const product = catalog.hosting[family];
 const destination = family === 'shared' ? catalog.checkout.sharedStore : catalog.checkout.wordpressStore;
-const initialCycle = product.cycles.includes('monthly') ? 'monthly' : product.cycles[0];
+const initialCycle = 'monthly' as const;
 ---
 <section class="pricing-section section-pad" data-pricing={family} id="pricing">
   <div class="container">

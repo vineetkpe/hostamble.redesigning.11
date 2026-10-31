@@ -1,7 +1,7 @@
 name: Validate redesign
 on:
   push:
-    branches: [feat/hostamble-astro-redesign]
+    branches: [feat/hostamble-astro-redesign, main]
   pull_request:
     branches: [main]
 permissions:
@@ -14,8 +14,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Resolve dependencies
-        run: npm install --no-audit --no-fund
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
       - name: Validate catalog and logic
         run: npm run validate:catalog && npm test
       - name: Astro checks
@@ -24,13 +29,17 @@ jobs:
         run: npm run build
         env:
           PUBLIC_SITE_STAGE: preview
-      - name: Capture dependency lockfile on feature branch
+      - name: Validate Cloudflare deployment bundle
+        run: npx wrangler deploy --dry-run --outdir .wrangler-dry-run
+      - name: Check output and noindex
+        run: npm run verify:build
+      - name: Commit resolved dependency lockfile (feature branch)
         if: github.event_name == 'push' && github.ref_name == 'feat/hostamble-astro-redesign'
         run: |
           if ! git ls-files --error-unmatch package-lock.json >/dev/null 2>&1; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add package-lock.json
-            git commit -m "chore: record resolved npm lockfile [skip ci]"
+            git commit -m "chore: commit dependency lockfile [skip ci]"
             git push origin HEAD:feat/hostamble-astro-redesign
           fi

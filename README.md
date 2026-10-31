@@ -44,3 +44,15 @@ Static hosting must support clean URLs and required redirects. `public/_redirect
 `tests/pricing.test.mjs` covers the central pricing logic, USD fallback, safety guardrails, and known cycles. A GitHub Actions job is included to test and build the project when a branch is pushed. Visual/browser checks (320–1440px, keyboard, focus, reduced motion) and actual WHMCS checkout verification are **not yet completed**.
 
 See `docs/launch-checklist.md` for commercial discrepancies and launch blockers. Do not deploy this draft over the live site until signed off.
+
+## Cloudflare Workers (Git integration)
+
+This is an Astro **static-assets Worker**, not Astro SSR. The committed `wrangler.jsonc` deploys `./dist` with clean URLs (`drop-trailing-slash`) and a real 404 response. `public/_redirects` and `public/_headers` are copied to dist and supported by Workers static assets. `npm run deploy` invokes Wrangler; no Cloudflare API token is stored in the repository.
+
+**Cloudflare Worker project name must match `wrangler.jsonc.name`.** Its default value is `hostamble-redesign`; if your existing connected Worker has another name, **change this field to the exact existing Worker name** before deploying. The Git connection itself does not reveal the Worker name to this repository. If you see `Worker name mismatch` in Cloudflare's build log, correct this field instead of creating a second Worker.
+
+In Cloudflare Workers & Pages → your Worker → **Settings → Build**, use production branch `main`, build command `npm run build`, and deploy command `npx wrangler deploy`; root directory `/`. Production builds currently default to `noindex` until commercial/SEO sign-off. Once approved, use `PUBLIC_SITE_STAGE=production npm run build` as the **production** build command (keep preview builds noindexed). Cloudflare provides `WORKERS_CI_BRANCH` so your build configuration can distinguish preview and production branches. After modifying settings, push a new commit for a new build.
+
+**Preserve WHMCS:** The domain `https://hostamble.com/dash/` must continue to resolve to the existing billing server. If a Worker is assigned as the catch-all for this host, requests to `/dash/*` can 404 or hit the static site instead. Configure separate hostname or route exclusions before routing the production website. The frontend cannot resolve this at build time. Also confirm Workers custom domain, TLS, and canonical `www`/apex redirects in Cloudflare dashboard.
+
+To test without deploying, run `npm run build && npx wrangler deploy --dry-run --outdir .wrangler-dry-run && npm run verify:build`. Avoid linking the Worker to the live site until these tests and the checkout route have been verified.

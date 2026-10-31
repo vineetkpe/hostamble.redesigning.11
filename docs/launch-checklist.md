@@ -19,6 +19,13 @@ This file is internal workflow documentation and should **not** be exposed as pu
 - [ ] Review all support and marketing language with the owner. No unverified uptime metrics, customer reviews, savings or guarantees should be added.
 - [ ] Approve full legal policy text and verify migrated terms/privacy/refund destinations.
 
+## Cloudflare Workers
+
+- [ ] Set `wrangler.jsonc.name` equal to the connected Worker name (the current name is unverified).
+- [ ] Confirm the Worker listens to `main`; use Cloudflare Git integration build command `npm run build` and deploy command `npx wrangler deploy`.
+- [ ] Keep `hostamble.com/dash/*` served by legacy WHMCS (routing/exclusion required if assigning Worker to the apex host).
+- [ ] Confirm whether the public site is on `www.hostamble.com` or apex before publishing canonical tags and Search Console.
+
 ## Engineering, SEO and deployment
 
 - [ ] Confirm package-lock committed by CI and `npm ci`, catalog validation, tests, typecheck, build all pass.

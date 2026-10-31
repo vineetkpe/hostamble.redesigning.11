@@ -1,0 +1,16 @@
+import {readFileSync, existsSync, readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import assert from 'node:assert/strict';
+const dist=resolve('dist');
+const required=['index.html','shared-hosting/index.html','wordpress-hosting/index.html','domains/index.html','business-email/index.html','vps/index.html','404.html','robots.txt','sitemap.xml','_redirects','_headers'];
+for(const path of required) assert(existsSync(resolve(dist,path)), 'Build output is missing '+path);
+const home=readFileSync(resolve(dist,'index.html'),'utf8');
+assert(home.includes('noindex,nofollow'),'Preview must not be crawlable');
+assert(home.includes('hostamble.com/dash/cart.php'),'Domain search must hand off to WHMCS');
+assert(home.includes('data-price'),'Pricing controls missing');
+assert(home.includes('name="query"'),'Domain form query name missing');
+const robots=readFileSync(resolve(dist,'robots.txt'),'utf8');
+assert(robots.includes('Disallow: /'),'Preview must disallow all bots');
+const sitemap=readFileSync(resolve(dist,'sitemap.xml'),'utf8');
+assert(!sitemap.includes('<url>'),'Preview sitemap must be empty');
+console.log('Static assets and preview protections passed');
