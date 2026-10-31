@@ -484,3 +484,6 @@ em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
 
 /* Prevent long existing action labels from widening narrow mobile viewports. */
 .journey-action{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+
+/* Keep the wide domain comparison table inside its own existing scroll region. */
+@media(max-width:760px){.domain-price-section{overflow-x:clip}.domain-price-table{width:100%;max-width:100%;overflow-x:auto}}
