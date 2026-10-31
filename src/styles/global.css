@@ -481,3 +481,6 @@ em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
  .domain-ticker .ticker-runner{animation:none!important}
  .domain-ticker .ticker-set[aria-hidden="true"]{display:none}
 }
+
+/* Prevent long existing action labels from widening narrow mobile viewports. */
+.journey-action{max-width:100%;white-space:normal;overflow-wrap:anywhere}
