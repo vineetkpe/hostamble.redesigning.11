@@ -25,13 +25,15 @@ jobs:
         run: npm run validate:catalog && npm test
       - name: Astro checks
         run: npm run check
-      - name: Build static site
-        run: npm run build
+      # Simulate Cloudflare's exact deploy command from a fresh checkout:
+      # dist/ must NOT exist before Wrangler invokes its configured build step.
+      - name: Ensure no prebuilt dist exists
+        run: node -e "require('node:fs').rmSync('dist', { recursive: true, force: true })"
+      - name: Test Wrangler deploy from clean checkout (runs Astro build)
+        run: npx wrangler deploy --dry-run --outdir .wrangler-dry-run
         env:
           PUBLIC_SITE_STAGE: preview
-      - name: Validate Cloudflare deployment bundle
-        run: npx wrangler deploy --dry-run --outdir .wrangler-dry-run
-      - name: Check output and noindex
+      - name: Verify built files and preview protections
         run: npm run verify:build
       - name: Commit resolved dependency lockfile (feature branch)
         if: github.event_name == 'push' && github.ref_name == 'feat/hostamble-astro-redesign'
