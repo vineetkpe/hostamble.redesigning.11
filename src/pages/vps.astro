@@ -2,9 +2,69 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import FeatureCards from '../components/FeatureCards.astro';
+import InfoSplit from '../components/InfoSplit.astro';
+import StepsSection from '../components/StepsSection.astro';
+import FAQSection from '../components/FAQSection.astro';
 ---
-<BaseLayout title="VPS Hosting Enquiries | Hostamble" description="Ask Hostamble about virtual private servers, resource options, management level and current VPS prices.">
-  <PageHero eyebrow="VPS HOSTING" title="Make room for more control." description="More demanding projects need a different conversation. Explore VPS options with the team before you commit." icon="⌘"/>
-  <section class="inquiry-section section-pad"><div class="container inquiry-grid"><div><span class="eyebrow"><span class="eyebrow-line"></span> GO FURTHER</span><h2>Built around <em>your requirements.</em></h2><p>Tell the team about your CPU, memory, storage, operating-system, and management needs. Current VPS tiers, specifications, and prices need confirmation before we can publish a comparison.</p></div><div class="inquiry-card"><span class="inquiry-icon">⌘</span><h3>Need a VPS quote?</h3><p>Share what you're building and ask about technical requirements, backups, support boundaries, and billing terms.</p><a class="button button-dark" href="mailto:support@hostamble.com?subject=VPS%20hosting%20enquiry">Ask about VPS ↗</a><p class="inquiry-footnote">Do not assume managed administration or a published price.</p></div></div></section>
-  <ContactCTA />
+<BaseLayout title="VPS Hosting & Custom Server Enquiries | Hostamble" description="Explore VPS hosting concepts and ask Hostamble about CPU, RAM, SSD storage, backups, management and verified VPS pricing.">
+  <PageHero eyebrow="VPS HOSTING" title="Make room for more control." description="When your project needs a different kind of hosting, it helps to start with the requirements—not a guessed price." icon="⌘"/>
+  <InfoSplit
+    eyebrow="MORE ROOM TO BUILD"
+    title="Know when to"
+    accent="think beyond shared."
+    paragraphs={['A virtual private server gives an application its own allocated virtual resources within a larger physical system. It may be useful when a project needs more configuration control or a different software environment.', 'Unlike shared hosting, a VPS can carry additional administration responsibilities. Confirm whether the offered service is managed or unmanaged, and which security or backup tasks remain yours.']}
+    points={['Consider the software stack and operating system','Estimate CPU, memory and storage needs','Clarify management and security responsibilities']}
+    panelLabel="FLEXIBILITY STARTS WITH A PLAN"
+    panelTitle="Build around your workload."
+    panelText="The right specification depends on your application, traffic pattern and support needs."
+    panelSymbol="⌘"
+    href="mailto:support@hostamble.com?subject=VPS%20requirements"
+    actionLabel="Discuss a VPS"
+  />
+  <FeatureCards
+    eyebrow="WORKLOAD FIRST"
+    title="What are you"
+    accent="building next?"
+    description="These are examples of reasons to explore VPS hosting, not a promise that every workload is supported by the available Hostamble plans."
+    tone="cream"
+    items={[
+      {tag:'01 / APPLICATIONS',symbol:'⌘',title:'Custom applications',text:'Explore whether your application stack needs its own operating system, runtime, or system-level configuration.'},
+      {tag:'02 / GROWTH',symbol:'↗',title:'Changing resource needs',text:'Assess expected CPU, RAM, disk and network usage before requesting an appropriate server size.'},
+      {tag:'03 / RESPONSIBILITY',symbol:'✓',title:'Clear operational ownership',text:'Ask who handles updates, backups, monitoring, recovery and security for the actual proposed VPS package.'}
+    ]}
+  />
+  <section class="inquiry-section section-pad">
+    <div class="container inquiry-grid">
+      <div><span class="eyebrow"><span class="eyebrow-line"></span> A QUOTE THAT FITS</span><h2>Specs first. <em>Price second.</em></h2><p>Current VPS plans and rates are not verified in the redesign catalog, so there is no invented pricing grid. Contact the team with your anticipated resource and management requirements.</p><p>Share the operating system you prefer, software stack, storage capacity and expected growth. Verify service availability and terms before ordering.</p></div>
+      <div class="inquiry-card"><span class="inquiry-icon">⌘</span><h3>Need a VPS quote?</h3><p>Request confirmed specifications, pricing, backup options, management level and billing terms.</p><a class="button button-dark" href="mailto:support@hostamble.com?subject=VPS%20hosting%20enquiry">Ask about VPS ↗</a><p class="inquiry-footnote">No guaranteed resources, managed service, or uptime claims without verification.</p></div>
+    </div>
+  </section>
+  <StepsSection
+    eyebrow="PLAN YOUR SERVER"
+    title="A clearer path to"
+    accent="your VPS setup."
+    steps={[
+      {title:'Describe the workload',text:'Share the application, deployment stack, expected users and any dependencies.'},
+      {title:'Estimate resources',text:'Consider CPU, RAM, disk space, traffic, operating system and backups.'},
+      {title:'Confirm your responsibility',text:'Ask about administrative access, patching, monitoring, support and recovery terms.'},
+      {title:'Review the final quote',text:'Verify the exact available configuration, billing cycle, service scope and renewal conditions before placing an order.'}
+    ]}
+    tone="dark"
+    href="mailto:support@hostamble.com?subject=VPS%20hosting%20quote"
+    actionLabel="Request a quote"
+  />
+  <FAQSection
+    eyebrow="VPS FAQ"
+    title="Make the choice"
+    accent="with your eyes open."
+    intro="A few important conversations before running workloads on a virtual server."
+    questions={[
+      {question:'What is different about VPS hosting?',answer:'A VPS offers virtual server resources and can allow different configuration and administration options than a traditional shared hosting plan. Capabilities depend on the specific service.'},
+      {question:'Is the VPS managed for me?',answer:'Management levels are unverified. Confirm who handles updates, troubleshooting, backups and security before ordering.'},
+      {question:'What VPS specifications are available?',answer:'The current CPU, RAM, storage, location, network and pricing options must be confirmed with Hostamble support. No specific configuration is advertised here.'},
+      {question:'How do I choose enough resources?',answer:'Document application requirements, traffic assumptions and expected growth, then review a proposed configuration with the team.'}
+    ]}
+  />
+  <ContactCTA title="Let's plan your next server." text="Explain what you want to run and get a verified answer about VPS availability and options."/>
 </BaseLayout>

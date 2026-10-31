@@ -2,9 +2,70 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import DomainSearch from '../components/DomainSearch.astro';
+import FeatureCards from '../components/FeatureCards.astro';
+import InfoSplit from '../components/InfoSplit.astro';
+import StepsSection from '../components/StepsSection.astro';
+import FAQSection from '../components/FAQSection.astro';
 ---
-<BaseLayout title="Business Email Solutions | Hostamble" description="Explore business email options with Hostamble and contact the team for verified availability, features and pricing.">
-  <PageHero eyebrow="BUSINESS EMAIL" title="Big ideas deserve an inbox to match." description="Show up with an email address on your own domain. Talk with the Hostamble team about suitable options and current pricing." icon="@"/>
-  <section class="inquiry-section section-pad"><div class="container inquiry-grid"><div><span class="eyebrow"><span class="eyebrow-line"></span> WORK SMARTER</span><h2>Put your domain <em>to work.</em></h2><p>Business email can help your brand communicate with consistency. Product specifications and dedicated email package prices have not yet been verified for this redesign.</p></div><div class="inquiry-card"><span class="inquiry-icon">@</span><h3>Let's find your email setup.</h3><p>Ask about mailboxes, storage, migration options, access methods, and the current quote before ordering.</p><a class="button button-dark" href="mailto:support@hostamble.com?subject=Business%20email%20enquiry">Enquire about email ↗</a><p class="inquiry-footnote">No prices or delivery guarantees are assumed.</p></div></div></section>
-  <ContactCTA />
+<BaseLayout title="Business Email Hosting Enquiries | Hostamble" description="Explore professional email addresses for your domain and learn what to ask Hostamble about mailboxes, migration, storage, and pricing.">
+  <PageHero eyebrow="BUSINESS EMAIL" title="Big ideas deserve an inbox to match." description="Your own domain in every message. Get a clearer picture of what professional email can look like, then ask us about current options." icon="@"/>
+  <FeatureCards
+    eyebrow="MAKE IT YOURS"
+    title="Show up like"
+    accent="you mean business."
+    description="These are common ways businesses use domain-based email, not a list of unverified features in a specific Hostamble package."
+    tone="cream"
+    items={[
+      {tag:'01 / YOUR BRAND',symbol:'@',title:'An address people recognize',text:'An address such as hello@yourdomain.com ties your messages to your website’s name.'},
+      {tag:'02 / YOUR TEAM',symbol:'✳',title:'A place for team conversations',text:'Ask about individual mailboxes, aliases and shared-address options that could suit your workflow.'},
+      {tag:'03 / YOUR MOVE',symbol:'↗',title:'A practical migration plan',text:'Already using email elsewhere? Ask about migration support, DNS changes and how to minimize disruption.'}
+    ]}
+  />
+  <section class="inquiry-section section-pad">
+    <div class="container inquiry-grid">
+      <div><span class="eyebrow"><span class="eyebrow-line"></span> FIND THE RIGHT FIT</span><h2>Put your domain <em>to work.</em></h2><p>Dedicated business email product details and current prices have not been verified for this redesign. Rather than publishing an invented package, we’ll help you start with the right questions.</p><p>Share the number of users you need and ask about access methods, storage, migration and current billing terms.</p></div>
+      <div class="inquiry-card"><span class="inquiry-icon">@</span><h3>Let's find your email setup.</h3><p>Contact the team for currently available packages, the scope of support, and a quote before ordering.</p><a class="button button-dark" href="mailto:support@hostamble.com?subject=Business%20email%20enquiry">Enquire about email ↗</a><p class="inquiry-footnote">No unverified mailbox limits, uptime guarantees, or prices are claimed here.</p></div>
+    </div>
+  </section>
+  <InfoSplit
+    eyebrow="BEFORE YOU CHOOSE"
+    title="The details that"
+    accent="make email work."
+    paragraphs={['Think about how your team communicates today and what needs to stay the same when you move to a new email service.', 'Ask the provider about mailbox capacity, allowed devices and protocols, DNS records, spam controls, and whether old messages can be migrated. Product availability and inclusions depend on a verified quote.']}
+    points={['How many individual mailboxes will you need?','Do you have existing emails to migrate?','Which domains and devices need to connect?']}
+    panelLabel="A USEFUL FIRST QUESTION"
+    panelTitle="What does your team need?"
+    panelText="A short list of requirements helps the support team recommend an appropriate available package."
+    panelSymbol="@"
+    href="mailto:support@hostamble.com?subject=Business%20email%20requirements"
+    actionLabel="Share your requirements"
+  />
+  <StepsSection
+    eyebrow="A SIMPLE EMAIL PLAN"
+    title="Make your move"
+    accent="with more confidence."
+    steps={[
+      {title:'List your mailboxes',text:'Count the people and addresses you plan to use, including any shared inbox needs.'},
+      {title:'Confirm a suitable service',text:'Ask Hostamble for current mailbox, access, migration, and billing details.'},
+      {title:'Plan your domain records',text:'Check what DNS changes would be needed and how existing mail should be preserved.'},
+      {title:'Test before switching',text:'Once configured, verify incoming and outgoing messages and access on your devices.'}
+    ]}
+    href="/support"
+    actionLabel="See support options"
+  />
+  <DomainSearch compact />
+  <FAQSection
+    eyebrow="BUSINESS EMAIL FAQ"
+    title="Questions worth"
+    accent="asking first."
+    intro="Get clarity without relying on assumptions about a package."
+    questions={[
+      {question:'Do I need a domain for professional email?',answer:'An address on your own domain requires control of that domain and appropriate DNS configuration. You can search for a new domain if needed.'},
+      {question:'How many mailboxes are included?',answer:'The current business email packages have not yet been verified here. Please ask the team for mailbox limits, storage allocations and pricing.'},
+      {question:'Can I migrate existing messages?',answer:'Migration support and compatibility vary by service. Ask the team about supported methods and a plan to preserve your old mail.'},
+      {question:'Can I use email on my phone?',answer:'Device and protocol support must be confirmed for the actual offered package before purchase.'}
+    ]}
+  />
+  <ContactCTA title="Let's get your business email sorted." text="Tell the team what addresses and workflows you need and request a verified quote."/>
 </BaseLayout>

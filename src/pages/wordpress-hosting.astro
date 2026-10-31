@@ -3,14 +3,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import PricingGrid from '../components/PricingGrid.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import InfoSplit from '../components/InfoSplit.astro';
+import FeatureCards from '../components/FeatureCards.astro';
+import StepsSection from '../components/StepsSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import DomainSearch from '../components/DomainSearch.astro';
 ---
-<BaseLayout title="WordPress Hosting Plans | Hostamble" description="Compare Hostamble WordPress hosting plans: Starter, Essential, Growth, and Prime, with INR monthly and annual prices.">
-  <PageHero eyebrow="WORDPRESS HOSTING" title="Make something wonderful with WordPress." description="Your blog, your portfolio, your business — give it space to grow with plans made for WordPress projects." icon="W" />
-  <PricingGrid family="wordpress" heading="A WordPress plan with your name on it." description="Choose a monthly or annual billing period. Storage and limits are provisional pending comparison with the live checkout."/>
-  <section class="value-section section-pad"><div class="container"><div class="section-intro"><span class="eyebrow"><span class="eyebrow-line"></span> YOUR CREATIVE CORNER</span><h2>Focus on the <em>fun part.</em></h2></div><div class="value-grid">
-    <article><span class="value-icon">01 W</span><h3>A familiar home</h3><p>Build with the WordPress ecosystem you know, from personal blogs to professional websites.</p></article>
-    <article><span class="value-icon">02 ✓</span><h3>SSL on listed plans</h3><p>SSL certificates are included in the published WordPress plan details.</p></article>
-    <article><span class="value-icon">03 ✳</span><h3>Backup tools</h3><p>JetBackup appears in the published plan specifications. Confirm current recovery terms with support.</p></article>
-  </div></div></section>
-  <ContactCTA />
+<BaseLayout title="WordPress Hosting Plans | Hostamble" description="Find Hostamble WordPress hosting plans, compare monthly and annual totals, discover the essentials, and get ready to launch a WordPress website.">
+  <PageHero eyebrow="WORDPRESS HOSTING" title="Make something wonderful with WordPress." description="From your first article to an entire brand website, bring your ideas to life with plans for WordPress projects." icon="W" />
+  <InfoSplit
+    eyebrow="MADE FOR CREATORS"
+    title="A familiar way to"
+    accent="make the web yours."
+    paragraphs={['WordPress is a content management system used to create and update websites without building every page by hand. Pick themes, organize pages, and publish posts as your project evolves.', 'Choose the hosting tier based on your site count, storage and email needs. Plugins and themes have their own requirements, so check compatibility as you plan.']}
+    points={['Build pages, articles and navigation','Explore themes and plugins thoughtfully','Choose a hosting tier that fits your content']}
+    panelLabel="YOUR CREATIVE CORNER"
+    panelTitle="Create. Update. Keep growing."
+    panelText="A website can start with one page and grow into something much bigger."
+    panelSymbol="W"
+    href="#pricing"
+    actionLabel="View WordPress plans"
+  />
+  <PricingGrid family="wordpress" heading="A WordPress plan with your name on it." description="Choose monthly or annual billing and review the listed plan features. Some older pages disagree on limits, so the final WHMCS details take priority."/>
+  <FeatureCards
+    eyebrow="PRACTICAL BUILDING BLOCKS"
+    title="Spend less time comparing,"
+    accent="more time creating."
+    description="These are features listed in the provisional WordPress catalog, not promises of performance or a particular restoration period."
+    tone="cream"
+    items={[
+      {tag:'01 / CONTENT',symbol:'W',title:'Your publishing space',text:'Choose from Starter, Essential, Growth or Prime based on the published number of domains and storage allocation.'},
+      {tag:'02 / SSL',symbol:'✓',title:'An SSL starting point',text:'SSL is listed across the WordPress plans. Confirm installation and renewal details for your domain.'},
+      {tag:'03 / BACKUPS',symbol:'↺',title:'Backup and security tools',text:'JetBackup 5 and BitNinja appear in the provisional specifications. Check which services and policies apply to your plan.'}
+    ]}
+  />
+  <StepsSection
+    eyebrow="WORDPRESS GETTING STARTED"
+    title="One step closer to"
+    accent="publish day."
+    steps={[
+      {title:'Choose your plan',text:'Compare the number of domains, listed SSD storage, email accounts and billing totals.'},
+      {title:'Choose your domain',text:'Connect an existing name or check availability for a new one through Hostamble’s domain search.'},
+      {title:'Prepare WordPress',text:'Follow your hosting account’s setup instructions and confirm WordPress, theme and plugin compatibility.'},
+      {title:'Review before launch',text:'Test your site on mobile, check links and forms, and verify SSL and backup options.'}
+    ]}
+    href="/guides"
+    actionLabel="Explore guides"
+  />
+  <FAQSection
+    eyebrow="WORDPRESS FAQ"
+    title="A little clarity for"
+    accent="your next launch."
+    intro="Compare the key decisions before choosing a WordPress plan."
+    questions={[
+      {question:'What is the difference between WordPress and shared hosting?',answer:'WordPress is the software used to manage content. Shared hosting describes the hosting environment. A WordPress-focused plan may bundle features relevant to those sites; verify the actual offerings in checkout.'},
+      {question:'Can I use my own domain?',answer:'A domain is required to reach your site. Ask Hostamble support about connecting an existing domain or search for a new registration.'},
+      {question:'Why does the Growth annual total look different?',answer:'The provisional catalog lists ₹139 monthly and ₹1,168 annually for Growth. This mismatch requires confirmation; we do not calculate or advertise a saving from it.'},
+      {question:'Do the plans guarantee automatic backups?',answer:'Backup tools are listed, but the frequency, retention window and recovery terms need confirmation with Hostamble support.'}
+    ]}
+  />
+  <DomainSearch compact />
+  <ContactCTA title="Your next WordPress site starts here." text="Pick a starting plan, explore a new domain name, or ask about setup and migration details."/>
 </BaseLayout>

@@ -1,0 +1,37 @@
+---
+interface Item {
+  tag: string;
+  title: string;
+  text: string;
+  symbol?: string;
+  href?: string;
+  linkLabel?: string;
+}
+interface Props {
+  eyebrow: string;
+  title: string;
+  accent: string;
+  description?: string;
+  items: Item[];
+  tone?: 'cream' | 'white' | 'mint';
+}
+const { eyebrow, title, accent, description, items, tone = 'cream' } = Astro.props;
+---
+<section class:list={['spotlight-section','section-pad', 'spotlight-'+tone]} aria-label={eyebrow}>
+  <div class="container">
+    <div class="section-intro split-intro">
+      <div><span class="eyebrow"><span class="eyebrow-line"></span>{eyebrow}</span><h2>{title} <em>{accent}</em></h2></div>
+      {description && <p>{description}</p>}
+    </div>
+    <div class="spotlight-grid">
+      {items.map((item) => <article class="spotlight-card">
+        <div class="spotlight-card-top">
+          <span>{item.tag}</span>
+          <span aria-hidden="true" class="spotlight-icon">{item.symbol ?? '✳'}</span>
+        </div>
+        <div><h3>{item.title}</h3><p>{item.text}</p>
+        {item.href && <a class="spotlight-card-link" href={item.href}>{item.linkLabel ?? 'Explore more'} <span aria-hidden="true">↗</span></a>}</div>
+      </article>)}
+    </div>
+  </div>
+</section>
