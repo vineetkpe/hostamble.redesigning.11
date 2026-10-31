@@ -1,6 +1,6 @@
 # Hostamble — website redesign
 
-An Astro static-assets website for Hostamble, deployed from the GitHub repository through an owner-connected Cloudflare Workers integration. The approved **Open Waypoint** brand mark from the owner, and the ivory/charcoal/burnt-orange palette, are implemented throughout. The original prototype HTML/CSS and local font files were not provided, so the architectural hero illustration is a new SVG interpretation of the approved direction, **not** a claimed copy of the original concept. The approved Barlow Condensed and Manrope fonts are loaded from Google Fonts until self-hostable licensed copies are supplied.
+A new, **static Astro** marketing site for Hostamble. This is a **review branch**, not a live deployment. The repository started with only a README and .gitignore; no approved `concept/`, artwork, fonts, or strategy assets were present to port. The CSS illustration and simple "h." symbol are original working visual concepts pending brand sign-off.
 
 ## Run locally
 
@@ -41,9 +41,9 @@ Static hosting must support clean URLs and required redirects. `public/_redirect
 
 ## Verification and status
 
-`tests/pricing.test.mjs` covers the central pricing logic, USD fallback, safety guardrails, and known cycles. A GitHub Actions job is included to test and build the project when a branch is pushed. Automated tests cover pricing, build/route output, brand and offer content, and a clean Wrangler build dry run. Browser checks across 320–1440px, keyboard/focus/reduced-motion interactions, live Cloudflare deployment and actual WHMCS checkout verification are **not yet independently completed**.
+`tests/pricing.test.mjs` covers the central pricing logic, USD fallback, safety guardrails, and known cycles. A GitHub Actions job is included to test and build the project when a branch is pushed. Visual/browser checks (320–1440px, keyboard, focus, reduced motion) and actual WHMCS checkout verification are **not yet completed**.
 
-See `docs/launch-checklist.md` for commercial discrepancies and launch blockers. The owner has authorized GitHub code updates; these changes do not modify WHMCS or verify custom-domain routing.
+See `docs/launch-checklist.md` for commercial discrepancies and launch blockers. Do not deploy this draft over the live site until signed off.
 
 ## Cloudflare Workers (Git integration)
 
@@ -60,12 +60,3 @@ To test without deploying from a clean checkout, run `npx wrangler deploy --dry-
 ### Cloudflare error: assets.directory ./dist missing
 
 If Cloudflare reports `The directory specified by assets.directory does not exist: /opt/buildhome/repo/dist`, it previously skipped the Astro build. Commit introducing Wrangler's `build.command` fixes this in source: every `npx wrangler deploy` must first run `npm run build`. GitHub Actions deliberately tests the Wrangler command with `dist` deleted and fails if the build output is not recreated. If Cloudflare still reports the same error after this commit, verify that the Worker builds from repository root `/` and deploys the latest `main` commit (rather than an older branch or mismatched root directory).
-
-## Approved brand implementation
-
-- SVG logo: `public/brand/open-waypoint.svg`; charcoal-background inverse: `public/brand/open-waypoint-inverse.svg`; favicon: `public/favicon.svg`; social artwork: `public/brand/hostamble-share.svg`.
-- Tokens and responsive styling: `src/styles/global.css` (Canvas `#F7F5F0`, Ink `#20211F`, Accent `#A84223`). Body uses Manrope and large selected display headings use Barlow Condensed 600.
-- Hero illustration: `public/illustrations/hosting-architecture.svg` is locally authored and carries no fabricated metrics.
-- Owner-confirmed promotional wording: a free `.us.cc` domain with **qualifying semiannual hosting**. `src/components/PricingGrid.astro` renders the banner *above* shared hosting cards. The banner controls `src/scripts/site.js`, which selects the explicit 6-month catalog totals. This does not pass an unverified WHMCS product ID or promise checkout applies the offer automatically.
-- Domain extension cards in `src/components/DomainSearch.astro` derive first-year/renewal prices from the same central catalog as `/domains`, with a live WHMCS search handoff. The original prices were observed 31 Oct 2026; recheck before launch.
-- The homepage has ten sections; five product pages have at least six. `scripts/verify-build.mjs` enforces the counts.

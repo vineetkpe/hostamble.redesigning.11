@@ -1,31 +1,22 @@
 ---
 const products = [
-  {num:'02',name:'WordPress Hosting',text:'Build pages, publish updates and manage your WordPress site with familiar tools.',href:'/wordpress-hosting'},
-  {num:'03',name:'Domain Names',text:'Find your name and compare first-year and renewal prices before registering.',href:'/domains'},
-  {num:'04',name:'Business Email',text:'Use your own domain for professional communication. Ask about current packages.',href:'/business-email'},
-  {num:'05',name:'VPS Hosting',text:'Discuss CPU, memory and management needs for more demanding projects.',href:'/vps'}
+  {num:'01', symbol:'▦',name:'Shared hosting',text:'The friendly, affordable foundation for your website.',href:'/shared-hosting',kind:'mint'},
+  {num:'02',symbol:'W',name:'WordPress hosting',text:'A home built for publishing, creating, and growing.',href:'/wordpress-hosting',kind:'peach'},
+  {num:'03',symbol:'↗',name:'Domains',text:'Find a name that feels like you, from day one.',href:'/domains',kind:'lavender'},
+  {num:'04',symbol:'@',name:'Business email',text:'Make every message feel a little more professional.',href:'/business-email',kind:'yellow'},
+  {num:'05',symbol:'⌘',name:'VPS hosting',text:'Explore more control for growing technical projects.',href:'/vps',kind:'blue'}
 ];
 ---
-<section class="products-section section-pad" id="solutions" aria-labelledby="products-heading">
+<section class="products-section section-pad" id="solutions">
   <div class="container">
-    <div class="section-intro split-intro">
-      <div><span class="eyebrow">WHAT CAN WE HELP YOU BUILD?</span><h2 id="products-heading">Everything your site needs, <em>under one roof.</em></h2></div>
-      <p>From your first website to the tools that help your business move forward. Choose a service to learn what it includes.</p>
-    </div>
-    <div class="product-editorial-grid">
-      <a href="/shared-hosting" class="product-featured">
-        <span class="product-no">01 / SHARED HOSTING</span>
-        <div class="product-feature-graphic" aria-hidden="true"><span class="product-building product-building-one"></span><span class="product-building product-building-two"></span><span class="product-building product-building-three"></span></div>
-        <div><h3>Well-built hosting for every beginning.</h3><p>NVMe storage, LiteSpeed, cPanel, SSL, daily backups and the option for free cPanel-to-cPanel migration.</p></div>
-        <span class="product-discover">Explore shared plans <span aria-hidden="true">↗</span></span>
-      </a>
-      <div class="product-rows">
-        {products.map(item => <a href={item.href} class="product-row">
-          <span class="product-no">{item.num}</span>
-          <span class="product-row-copy"><strong>{item.name}</strong><span>{item.text}</span></span>
-          <span class="product-row-arrow" aria-hidden="true">↗</span>
-        </a>)}
-      </div>
+    <div class="section-intro split-intro"><div><span class="eyebrow"><span class="eyebrow-line"></span> THE GOOD STUFF</span><h2>Everything your idea <em>needs to grow.</em></h2></div><p>One launchpad for your digital life. Choose what you're building, and we'll show you where to start.</p></div>
+    <div class="product-grid">
+      {products.map((product) => <a class:list={['product-card','product-'+product.kind]} href={product.href}>
+        <div class="product-card-top"><span>{product.num} / 05</span><span aria-hidden="true" class="product-arrow">↗</span></div>
+        <span class="product-symbol" aria-hidden="true">{product.symbol}</span>
+        <div><h3>{product.name}</h3><p>{product.text}</p></div>
+        <span class="product-footer">Explore service <span aria-hidden="true">↗</span></span>
+      </a>)}
     </div>
   </div>
 </section>

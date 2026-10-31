@@ -1,17 +1,13 @@
 ---
-interface Props {eyebrow?:string;title:string;description:string;icon?:string;}
-const {eyebrow='HOSTAMBLE',title,description}=Astro.props as Props;
+const {eyebrow='HOSTAMBLE', title, description, icon='✳'}=Astro.props;
 ---
-<section class="inner-hero" aria-label={eyebrow}>
+<section class="inner-hero">
   <div class="container inner-hero-grid">
     <div>
-      <span class="eyebrow">{eyebrow}</span>
+      <span class="eyebrow light-eyebrow"><span class="pulse-dot"></span> {eyebrow}</span>
       <h1>{title}</h1>
       <p>{description}</p>
     </div>
-    <div class="inner-hero-art" aria-hidden="true">
-      <img src="/brand/open-waypoint.svg" width="180" height="180" alt=""/>
-      <b>HOSTAMBLE / OPEN WAYPOINT</b>
-    </div>
+    <div class="inner-hero-art" aria-hidden="true"><span>{icon}</span><i></i><b>YOUR SPACE TO GROW</b></div>
   </div>
 </section>

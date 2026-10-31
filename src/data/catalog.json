@@ -38,12 +38,11 @@
           },
           "features": [
             "1 website",
-            "4 GB NVMe storage",
+            "4 GB SSD storage",
             "40 GB bandwidth",
             "Free SSL certificate",
             "cPanel access",
-            "Daily JetBackup · last 3 days",
-            "Free cPanel-to-cPanel migration"
+            "JetBackup included"
           ]
         },
         {
@@ -59,12 +58,11 @@
           },
           "features": [
             "3 websites",
-            "10 GB NVMe storage",
+            "10 GB SSD storage",
             "100 GB bandwidth",
             "Free SSL certificate",
             "cPanel access",
-            "Daily JetBackup · last 3 days",
-            "Free cPanel-to-cPanel migration"
+            "JetBackup included"
           ]
         },
         {
@@ -80,12 +78,11 @@
           },
           "features": [
             "10 websites",
-            "25 GB NVMe storage",
+            "25 GB SSD storage",
             "250 GB bandwidth",
             "Free SSL certificate",
             "cPanel access",
-            "Daily JetBackup · last 3 days",
-            "Free cPanel-to-cPanel migration"
+            "JetBackup included"
           ]
         }
       ]
@@ -108,12 +105,11 @@
           },
           "features": [
             "1 domain",
-            "4 GB NVMe storage",
+            "4 GB SSD storage",
             "1 email account",
             "Free SSL certificate",
-            "Daily JetBackup · last 3 days",
-            "Imunify360 security",
-            "Free cPanel-to-cPanel migration"
+            "JetBackup 5",
+            "BitNinja security"
           ]
         },
         {
@@ -127,12 +123,11 @@
           },
           "features": [
             "Up to 3 domains",
-            "8 GB NVMe storage",
+            "8 GB SSD storage",
             "2 email accounts",
             "Free SSL certificate",
-            "Daily JetBackup · last 3 days",
-            "Imunify360 security",
-            "Free cPanel-to-cPanel migration"
+            "JetBackup 5",
+            "BitNinja security"
           ]
         },
         {
@@ -146,12 +141,11 @@
           },
           "features": [
             "Up to 5 domains",
-            "15 GB NVMe storage",
+            "15 GB SSD storage",
             "3 email accounts",
             "Free SSL certificate",
-            "Daily JetBackup · last 3 days",
-            "Imunify360 security",
-            "Free cPanel-to-cPanel migration"
+            "JetBackup 5",
+            "BitNinja security"
           ]
         },
         {
@@ -165,12 +159,11 @@
           },
           "features": [
             "Up to 10 domains",
-            "25 GB NVMe storage",
+            "25 GB SSD storage",
             "5 email accounts",
             "Free SSL certificate",
-            "Daily JetBackup · last 3 days",
-            "Imunify360 security",
-            "Free cPanel-to-cPanel migration"
+            "JetBackup 5",
+            "BitNinja security"
           ]
         }
       ]

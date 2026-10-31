@@ -9,13 +9,13 @@ This file is internal workflow documentation and should **not** be exposed as pu
 - [ ] Confirm tax treatment, renewal hosting charges, refund applicability, free domain rules, and plan cycle options directly with WHMCS.
 - [ ] Verify each plan's WHMCS product ID and exact billing-cycle mapping before deep-linking to a selected plan; avoid generic checkout links if they cannot preserve selections.
 - [ ] Recheck domain first-year and renewal prices (.com ₹1299/₹1299, .in ₹814.80/₹814.80, .online ₹299/₹4999, .site ₹199/₹4599), and any premium-domain fees.
-- [ ] Verify .us.cc promotional terms, eligible semiannual hosting plans, region/availability, and whether the domain is free only as a bundled offer.
+- [ ] Verify .US.CC promotional terms, eligible semiannual hosting plans, region/availability, and whether the domain is free only as a bundled offer.
 - [ ] Verify Business Email and VPS commercial packages; until then they are enquiry-only.
 - [ ] Source a current dated INR/USD exchange rate; record rate, date, and source in catalog. Keep USD disabled if unavailable or stale.
 
 ## Brand and content
 
-- [x] Implement owner-approved Open Waypoint SVG and ivory/charcoal/burnt-orange tokens across pages. [ ] Obtain original concept source, brand guideline document and local font files for final visual/font licensing review.
+- [ ] Provide/approve final Hostamble logo artwork, font license files, palette and copy. Existing repo contained no approved concept assets.
 - [ ] Review all support and marketing language with the owner. No unverified uptime metrics, customer reviews, savings or guarantees should be added.
 - [ ] Approve full legal policy text and verify migrated terms/privacy/refund destinations.
 
@@ -42,14 +42,3 @@ This file is internal workflow documentation and should **not** be exposed as pu
 ## Source checks
 
 Consult `docs/source-notes.md` for where provisional values came from. Recheck all commercial facts on launch day.
-
-## Approved visual correction — remaining verification
-
-- [ ] The supplied Open Waypoint SVG is now used consistently; obtain the missing original concept HTML/CSS and brand guide for final pixel-level review (they were not attached to this repository).
-- [ ] Approved display fonts are loaded from Google Fonts; obtain original bundled licensed font files if local hosting is required.
-- [ ] Confirm exact eligibility, registration duration, renewals and exclusions for the owner-approved free .us.cc domain with six-month hosting. The banner selects semiannual totals but does not promise WHMCS will auto-apply an unverified offer.
-- [ ] Verify actual plan-ID/deep-link and four-cycle agreement with live WHMCS; do not silently correct the WordPress Growth annual discrepancy.
-- [ ] Recheck domain registration/renewal snapshot (31 Oct 2026) before production launch.
-- [ ] Confirm any specific chat and WhatsApp destination URLs; do not invent URLs.
-- [ ] Browser check for 320/375/768/1024/1440 px, keyboard, native domain handoff, and reduced-motion; static build alone does not establish WCAG compliance.
-- [ ] Inspect public staging/production indexing; the default preview build is deliberately noindex.

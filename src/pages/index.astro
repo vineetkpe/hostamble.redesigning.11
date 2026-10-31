@@ -5,81 +5,50 @@ import DomainSearch from '../components/DomainSearch.astro';
 import ProductGrid from '../components/ProductGrid.astro';
 import PricingGrid from '../components/PricingGrid.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import StepsSection from '../components/StepsSection.astro';
+import ServiceChooser from '../components/ServiceChooser.astro';
 import FAQSection from '../components/FAQSection.astro';
 ---
-<BaseLayout title="Hostamble | NVMe Web Hosting, WordPress & Domains" description="A better home for your website: NVMe storage, LiteSpeed, cPanel, Imunify360, daily backups and free cPanel-to-cPanel migration on eligible hosting.">
+<BaseLayout title="Hostamble — Make room for your next big idea" description="Bring your ideas online with shared hosting, WordPress hosting, domains, business email, and VPS options from Hostamble.">
   <Hero />
-  <div class="trust-strip" aria-label="Hosting technologies and service details">
-    <div class="container">
-      <span class="proof-lead">THE HOSTING FOUNDATION</span>
-      <span>NVMe Storage</span><span>LiteSpeed</span><span>cPanel</span><span>Imunify360</span><span>Daily JetBackup</span>
-    </div>
-  </div>
+  <div class="trust-strip"><div class="container"><span>THE LITTLE THINGS MATTER</span><span>✳ cPanel on listed shared plans</span><span>✳ SSL included</span><span>✳ Backup tools</span><span>✳ Domain discovery</span></div></div>
   <ProductGrid />
   <DomainSearch />
-  <PricingGrid family="shared" showOffer={true} eyebrow="HOSTING PLANS" heading="Straightforward plans. Confident starts." description="Choose a billing period to see the full total for Basic, Starter and Elite. Compare the included resources before heading to the hosting store."/>
-  <section class="wordpress-story section-pad" aria-labelledby="wp-story-title">
-    <div class="container wp-story-layout">
-      <div class="wordpress-visual" aria-hidden="true">
-        <div class="wp-paper wp-paper-back"></div>
-        <div class="wp-paper wp-paper-front"><span>YOUR IDEAS, PUBLISHED</span><strong>W</strong><i></i><i></i><i></i><div class="wp-paper-footer">WordPress / Hostamble</div></div>
-      </div>
-      <div class="wp-story-copy">
-        <span class="eyebrow">WORDPRESS ON YOUR TERMS</span>
-        <h2 id="wp-story-title">Publish your next chapter <em>with WordPress.</em></h2>
-        <p>Make a blog, portfolio or business website with a familiar content editor. WordPress and Shared Hosting use the same underlying hosting offering, with NVMe storage, LiteSpeed, Imunify360 and daily backups.</p>
-        <ul class="clean-feature-list"><li>Pages, posts and content you control</li><li>SSL and cPanel access with listed plans</li><li>Free cPanel-to-cPanel migration</li></ul>
-        <a class="button button-outline" href="/wordpress-hosting">Explore WordPress Hosting <span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-  </section>
-  <section class="foundation-section section-pad" aria-labelledby="foundation-title">
-    <div class="container">
-      <div class="section-intro split-intro">
-        <div><span class="eyebrow">WHAT'S BEHIND YOUR WEBSITE</span><h2 id="foundation-title">A solid foundation, <em>not a list of promises.</em></h2></div>
-        <p>The technologies and service details you should be able to understand before choosing where your website lives.</p>
-      </div>
-      <div class="foundation-grid">
-        <article><span class="foundation-number">01 / SPEED</span><h3>NVMe &amp; LiteSpeed</h3><p>NVMe storage and LiteSpeed web serving form the foundation of the shared and WordPress hosting offering.</p></article>
-        <article><span class="foundation-number">02 / SECURITY</span><h3>SSL &amp; Imunify360</h3><p>SSL and Imunify360 are included. Software updates and strong credentials remain important parts of site security.</p></article>
-        <article><span class="foundation-number">03 / BACKUP</span><h3>Daily JetBackup</h3><p>Automatic daily backups are retained for the last three days on Shared and WordPress hosting. Ask support about recovery.</p></article>
-        <article><span class="foundation-number">04 / CONTROL</span><h3>cPanel access</h3><p>Use cPanel for familiar hosting tasks and WordPress for publishing. Features depend on the plan you select.</p></article>
-      </div>
-    </div>
-  </section>
-  <section class="migration-section section-pad" id="migration" aria-labelledby="migration-title">
-    <div class="container migration-layout">
-      <div><span class="eyebrow light-eyebrow">MOVING TO HOSTAMBLE?</span><h2 id="migration-title">We'll help you <em>make the move.</em></h2><p>Free cPanel-to-cPanel migration is available on Shared and WordPress hosting. Tell the team about your current cPanel account so eligibility and the migration steps can be checked.</p><a class="button button-light" href="/support">Ask about migration <span aria-hidden="true">↗</span></a></div>
-      <div class="migration-diagram" aria-label="Migration from one cPanel account to another">
-        <div class="migration-node"><span>EXISTING HOST</span><strong>cPanel</strong><small>Current account</small></div>
-        <span class="migration-arrow" aria-hidden="true">→</span>
-        <div class="migration-node migration-destination"><span>HOSTAMBLE</span><strong>cPanel</strong><small>New hosting</small></div>
-      </div>
-    </div>
-  </section>
-  <section class="support-showcase section-pad" aria-labelledby="support-title">
-    <div class="container">
-      <div class="section-intro split-intro"><div><span class="eyebrow">REAL SUPPORT, CLEAR HOURS</span><h2 id="support-title">People to turn to, <em>when you need a hand.</em></h2></div><p>Reach us through the right channel. We publish when chat is available and what to expect from tickets.</p></div>
-      <div class="support-showcase-grid">
-        <article><span>01 / CHAT &amp; WHATSAPP</span><h3>Monday–Saturday</h3><p>9 AM–8 PM IST (UTC+05:30).</p><a href="/support">Support channels <span aria-hidden="true">↗</span></a></article>
-        <article><span>02 / SUPPORT TICKETS</span><h3>Submit 24/7</h3><p>Tickets are accepted around the clock. Replies are provided within 12 hours, not guaranteed resolution.</p><a href="/support">How to get help <span aria-hidden="true">↗</span></a></article>
-        <article><span>03 / INDEPENDENT REVIEWS</span><h3>See the conversation</h3><p>Read the public Trustpilot profile for yourself. We don't manufacture scores or testimonials.</p><a href="https://www.trustpilot.com/review/hostamble.com">Visit Trustpilot <span aria-hidden="true">↗</span></a></article>
-      </div>
-    </div>
-  </section>
+  <StepsSection
+    eyebrow="YOUR JOURNEY, SIMPLIFIED"
+    title="From an idea to"
+    accent="your own little corner."
+    description="You don't need to have everything figured out. Start with a name, choose the space you need, and manage it in one familiar client area."
+    steps={[
+      {title:'Find your name',text:'Search your preferred domain and check live availability in Hostamble’s domain system.'},
+      {title:'Choose your hosting',text:'Compare the website limits, storage, and billing periods that suit your project.'},
+      {title:'Make it yours',text:'Complete any purchase in the existing secure client area and follow your service setup instructions.'}
+    ]}
+    href="/guides"
+    actionLabel="Explore getting-started guides"
+  />
+  <PricingGrid family="shared" eyebrow="PLANS THAT MAKE SENSE" heading="More value. Less figuring things out." description="Start with the space you need. Compare plans and take the next step at Hostamble's secure checkout."/>
+  <section class="promo-section section-pad"><div class="container"><div class="promo-grid">
+    <div class="promo-art" aria-hidden="true"><span class="promo-orbit">✳</span><div class="promo-domain">youridea<span>.us.cc</span></div><div class="promo-badge">A LITTLE BONUS ↗</div></div>
+    <div><span class="eyebrow"><span class="eyebrow-line"></span> MAKE IT YOURS</span><h2>Even more reasons to <em>launch that idea.</em></h2><p>Look out for Hostamble's .US.CC domain promotion with eligible semiannual hosting. Promotion terms and domain eligibility are confirmed at checkout.</p><a class="button button-dark" href="/shared-hosting">See hosting options ↗</a></div>
+  </div></div></section>
+  <section class="value-section section-pad"><div class="container"><div class="section-intro"><span class="eyebrow"><span class="eyebrow-line"></span> BUILT AROUND YOU</span><h2>Less hosting jargon. <em>More getting things done.</em></h2></div><div class="value-grid">
+    <article><span class="value-icon">01 ✳</span><h3>Get online faster</h3><p>From finding your name to choosing your hosting, everything begins with a clear next step.</p></article>
+    <article><span class="value-icon">02 ◇</span><h3>Tools that make sense</h3><p>Selected shared hosting plans include familiar cPanel access, SSL, and backup tools.</p></article>
+    <article><span class="value-icon">03 ↗</span><h3>Grow at your pace</h3><p>Start with a single website, explore WordPress, or enquire about a VPS when you're ready.</p></article>
+  </div></div></section>
+  <ServiceChooser />
   <FAQSection
-    eyebrow="BEFORE YOU BUY"
-    title="A few helpful"
-    accent="answers."
-    intro="Clear answers about hosting, domains, migration, backups and getting support."
+    eyebrow="YOUR QUESTIONS"
+    title="A few things worth"
+    accent="knowing first."
+    intro="A helpful starting point before you choose hosting or register your next domain."
     questions={[
-      {question:'Which hosting plan should I choose?',answer:'Start with how many websites you need, your storage and bandwidth requirements, and which billing period suits your budget. Review the current plan limits before ordering.'},
-      {question:'Can I use WordPress on Hostamble?',answer:'Yes. Hostamble has WordPress hosting options built on the same underlying offering as shared hosting. Choose the plan that suits your site and resource needs.'},
-      {question:'Is website migration free?',answer:'Free cPanel-to-cPanel migration is available on Shared and WordPress hosting. Contact support with your existing hosting details to confirm eligibility and plan the move.'},
-      {question:'How often are backups made?',answer:'JetBackup runs automatically daily, with backups retained for the last three days on Shared and WordPress hosting. Ask support how recovery requests are handled.'},
-      {question:'When can I reach support?',answer:'Chat and WhatsApp: Monday–Saturday, 9 AM–8 PM IST. Tickets can be submitted 24/7, with replies within 12 hours.'},
-      {question:'Does the .us.cc offer apply to monthly hosting?',answer:'No. The free .us.cc domain promotion is tied to qualifying semiannual (six-month) hosting. Registration duration, renewal fees and the exact eligible plans still need confirmation.'}
+      {question:'Can I start with just a domain?',answer:'Yes. Search a domain and continue to Hostamble’s domain registration checkout. Availability, promotional rules, and final charges are shown there.'},
+      {question:'What if I want to use WordPress?',answer:'Explore the dedicated WordPress hosting plans and compare monthly or annual totals. Current service specifications should be confirmed at checkout.'},
+      {question:'Does choosing a billing cycle change the total?',answer:'Yes. The pricing selector shows the explicit total for each published billing period; it does not calculate or promise discounts.'},
+      {question:'Where do I manage my services?',answer:'Hostamble’s existing client area handles account and billing management. Use the Log in link in the navigation.'}
     ]}
   />
-  <ContactCTA title="Your website deserves a better home." text="Compare hosting options, find your domain or speak with Hostamble about a cPanel migration."/>
+  <ContactCTA />
 </BaseLayout>

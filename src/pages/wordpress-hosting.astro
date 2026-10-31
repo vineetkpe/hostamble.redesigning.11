@@ -24,17 +24,17 @@ import DomainSearch from '../components/DomainSearch.astro';
     href="#pricing"
     actionLabel="View WordPress plans"
   />
-  <PricingGrid family="wordpress" heading="A WordPress plan with your name on it." description="Choose monthly or annual billing and review the listed plan features. Review the selected plan's limits, renewal terms and total before ordering."/>
+  <PricingGrid family="wordpress" heading="A WordPress plan with your name on it." description="Choose monthly or annual billing and review the listed plan features. Some older pages disagree on limits, so the final WHMCS details take priority."/>
   <FeatureCards
     eyebrow="PRACTICAL BUILDING BLOCKS"
     title="Spend less time comparing,"
     accent="more time creating."
-    description="WordPress sites use the same underlying hosting offering as shared plans, with NVMe, LiteSpeed and core account tools."
+    description="These are features listed in the provisional WordPress catalog, not promises of performance or a particular restoration period."
     tone="cream"
     items={[
       {tag:'01 / CONTENT',symbol:'W',title:'Your publishing space',text:'Choose from Starter, Essential, Growth or Prime based on the published number of domains and storage allocation.'},
       {tag:'02 / SSL',symbol:'✓',title:'An SSL starting point',text:'SSL is listed across the WordPress plans. Confirm installation and renewal details for your domain.'},
-      {tag:'03 / BACKUPS',symbol:'↺',title:'Backup and security tools',text:'Automatic daily JetBackup backups are retained for the most recent three days. Imunify360 is included.'}
+      {tag:'03 / BACKUPS',symbol:'↺',title:'Backup and security tools',text:'JetBackup 5 and BitNinja appear in the provisional specifications. Check which services and policies apply to your plan.'}
     ]}
   />
   <StepsSection
@@ -42,7 +42,7 @@ import DomainSearch from '../components/DomainSearch.astro';
     title="One step closer to"
     accent="publish day."
     steps={[
-      {title:'Choose your plan',text:'Compare the number of domains, listed NVMe storage, email accounts and billing totals.'},
+      {title:'Choose your plan',text:'Compare the number of domains, listed SSD storage, email accounts and billing totals.'},
       {title:'Choose your domain',text:'Connect an existing name or check availability for a new one through Hostamble’s domain search.'},
       {title:'Prepare WordPress',text:'Follow your hosting account’s setup instructions and confirm WordPress, theme and plugin compatibility.'},
       {title:'Review before launch',text:'Test your site on mobile, check links and forms, and verify SSL and backup options.'}
@@ -58,8 +58,8 @@ import DomainSearch from '../components/DomainSearch.astro';
     questions={[
       {question:'What is the difference between WordPress and shared hosting?',answer:'WordPress is the software used to manage content. Shared hosting describes the hosting environment. A WordPress-focused plan may bundle features relevant to those sites; verify the actual offerings in checkout.'},
       {question:'Can I use my own domain?',answer:'A domain is required to reach your site. Ask Hostamble support about connecting an existing domain or search for a new registration.'},
-      {question:'How do the monthly and annual totals work?',answer:'Choose the monthly or annual period to see its full listed total. Check billing and renewal details before paying.'},
-      {question:'Do the plans guarantee automatic backups?',answer:'Daily JetBackup backups are retained for the most recent three days. Ask support about restoration steps.'}
+      {question:'Why does the Growth annual total look different?',answer:'The provisional catalog lists ₹139 monthly and ₹1,168 annually for Growth. This mismatch requires confirmation; we do not calculate or advertise a saving from it.'},
+      {question:'Do the plans guarantee automatic backups?',answer:'Backup tools are listed, but the frequency, retention window and recovery terms need confirmation with Hostamble support.'}
     ]}
   />
   <DomainSearch compact />

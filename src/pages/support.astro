@@ -3,11 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import catalog from '../data/catalog.json';
 ---
-<BaseLayout title="Hostamble Support | Chat Hours, Tickets & Help" description="Hostamble chat and WhatsApp support: Monday–Saturday 9 AM–8 PM IST. Submit tickets 24/7; replies within 12 hours.">
-  <PageHero eyebrow="SUPPORT" title="Real help. Clear ways to reach us." description="Find the best way to ask for help with hosting, domains, migration or your account." icon="?"/>
-  <section class="support-section section-pad"><div class="container"><div class="section-intro"><span class="eyebrow">OUR SUPPORT CHANNELS</span><h2>Choose the right <em>next step.</em></h2><p>Chat and WhatsApp are available Monday–Saturday, 9 AM–8 PM IST (UTC+05:30). Tickets are accepted 24/7, with replies within 12 hours.</p></div><div class="support-grid">
-    <a class="support-card" href={catalog.checkout.login}><span>01 / TICKET SUPPORT</span><h3>Open your client area</h3><p>Submit a ticket at any hour. Replies are provided within 12 hours; this is not a guarantee of resolution.</p><b>Client area →</b></a>
-    <a class="support-card" href="mailto:support@hostamble.com"><span>02 / EMAIL</span><h3>Send us your question</h3><p>Need to ask about migration or hosting options? Email support@hostamble.com with the details.</p><b>Email support →</b></a>
-    <a class="support-card" href="/guides"><span>03 / SELF-SERVICE</span><h3>Hosting guides</h3><p>Explore the basics of domains, shared hosting and WordPress. Chat and WhatsApp hours are shown above.</p><b>Read guides →</b></a>
+<BaseLayout title="Help & Support | Hostamble" description="Reach Hostamble support, open your client account, or find links for domain and hosting assistance.">
+  <PageHero eyebrow="SUPPORT" title="We're in your corner." description="Have a question about hosting, billing, or domains? Start with the right support channel." icon="?"/>
+  <section class="support-section section-pad"><div class="container"><div class="section-intro"><span class="eyebrow"><span class="eyebrow-line"></span> LET'S SORT IT OUT</span><h2>How can we <em>help today?</em></h2></div><div class="support-grid">
+    <a class="support-card" href={catalog.checkout.login}><span>01 ↗</span><h3>Client area</h3><p>Sign in to manage your Hostamble account and access available support options.</p><b>Open client area →</b></a>
+    <a class="support-card" href="mailto:support@hostamble.com"><span>02 @</span><h3>Email support</h3><p>Send a message to support@hostamble.com with your question.</p><b>Write an email →</b></a>
+    <a class="support-card" href="/guides"><span>03 ✳</span><h3>Explore guides</h3><p>Start with basic guidance on domains, choosing a plan, and launching a website.</p><b>Read guides →</b></a>
   </div></div></section>
 </BaseLayout>

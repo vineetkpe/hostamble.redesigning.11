@@ -1,52 +1,56 @@
 ---
 import '../styles/global.css';
 import catalog from '../data/catalog.json';
-interface Props { title?: string; description?: string; socialTitle?: string; }
-const { title='Hostamble | NVMe Web Hosting, WordPress & Domains', description='NVMe web hosting with LiteSpeed, cPanel, daily backups, WordPress hosting, domains and help from the Hostamble team.', socialTitle=title } = Astro.props as Props;
+const {
+  title = 'Hostamble — Hosting for the ideas you are building',
+  description = 'Find approachable hosting, WordPress hosting and domains with clear pricing and straightforward tools.',
+  socialTitle = title
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.hostamble.com').toString();
 const launch = import.meta.env.PUBLIC_SITE_STAGE === 'production';
 const nav = [
   {name:'Home',href:'/'},{name:'Shared Hosting',href:'/shared-hosting'},
   {name:'WordPress',href:'/wordpress-hosting'},{name:'Domains',href:'/domains'},
-  {name:'Business Email',href:'/business-email'},{name:'VPS Hosting',href:'/vps'}
+  {name:'Business Email',href:'/business-email'},{name:'VPS',href:'/vps'}
 ];
 ---
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="theme-color" content="#20211F"/>
-    <meta name="description" content={description}/>
-    <meta name="robots" content={launch ? 'index,follow' : 'noindex,nofollow'}/>
-    <link rel="canonical" href={canonical}/>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content={socialTitle}/>
-    <meta property="og:description" content={description}/>
-    <meta property="og:url" content={canonical}/>
-    <meta property="og:site_name" content="Hostamble"/>
-    <meta property="og:image" content="https://www.hostamble.com/brand/hostamble-share.svg"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071a2c" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={launch ? 'index,follow' : 'noindex,nofollow'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Hostamble" />
     <title>{title}</title>
   </head>
   <body data-fx={JSON.stringify(catalog.fx)}>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="announcement" data-ribbon>
       <div class="container announcement-inner">
-        <span class="announcement-pill">SEMIANNUAL HOSTING OFFER</span>
-        <div class="announcement-line"><span>Get a free <strong>.us.cc</strong> domain with semiannual hosting. <small>Eligibility and renewal terms to be confirmed.</small></span></div>
-        <a class="announcement-action" href="/shared-hosting?billing=semiannual#pricing">See 6-month plans <span aria-hidden="true">↗</span></a>
-        <button type="button" class="announcement-pause" data-ribbon-toggle aria-label="Pause offer announcement">Pause</button>
+        <span class="announcement-pill">A little extra</span>
+        <div class="announcement-line">
+          <span>Explore semiannual hosting with a <strong>.US.CC domain promotion</strong> — eligibility confirmed during checkout.</span>
+        </div>
+        <a href="/shared-hosting" class="announcement-action">Explore plans <span aria-hidden="true">↗</span></a>
+        <button class="announcement-pause" type="button" data-ribbon-toggle aria-label="Pause announcement animation">Pause</button>
       </div>
     </div>
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="/" aria-label="Hostamble homepage">
-          <img src="/brand/open-waypoint.svg" width="40" height="40" alt=""/>
-          <span>Hostamble</span>
+          <svg viewBox="0 0 42 42" width="42" height="42" aria-hidden="true">
+            <rect width="42" height="42" rx="13" fill="#bdfb76"></rect>
+            <path d="M10 24V13m0 7c0-6 9-6 9 0v9m0-9c0-6 12-6 12 0v9" fill="none" stroke="#071a2c" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span>hostamble<span class="brand-dot">.</span></span>
         </a>
         <nav class="primary-nav" aria-label="Main navigation">
           {nav.map(item => <a href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>{item.name}</a>)}
@@ -54,10 +58,10 @@ const nav = [
         <div class="header-actions">
           <div class="currency-switch" role="group" aria-label="Display currency">
             <button type="button" data-currency="INR" aria-pressed="true">₹ INR</button>
-            <button type="button" data-currency="USD" aria-pressed="false">USD</button>
+            <button type="button" data-currency="USD" aria-pressed="false" title="Available with a recently verified exchange rate">USD</button>
           </div>
-          <a class="login-link" href={catalog.checkout.login}>Client login ↗</a>
-          <a class="button button-small button-dark" href={catalog.checkout.register}>Get started <span aria-hidden="true">↗</span></a>
+          <a class="login-link" href={catalog.checkout.login} rel="noopener">Log in <span aria-hidden="true">↗</span></a>
+          <a class="button button-small button-dark" href={catalog.checkout.register} rel="noopener">Get started</a>
         </div>
         <details class="mobile-nav">
           <summary aria-label="Toggle navigation"><span></span><span></span><span></span></summary>
@@ -65,28 +69,25 @@ const nav = [
             {nav.map(item => <a href={item.href}>{item.name}</a>)}
             <a href={catalog.checkout.login}>Client login ↗</a>
             <a href={catalog.checkout.register}>Create account ↗</a>
-            <div class="currency-switch" role="group" aria-label="Mobile display currency">
-              <button type="button" data-currency="INR" aria-pressed="true">₹ INR</button>
-              <button type="button" data-currency="USD" aria-pressed="false">USD</button>
-            </div>
+            <div class="currency-switch" role="group" aria-label="Mobile display currency"><button type="button" data-currency="INR" aria-pressed="true">₹ INR</button><button type="button" data-currency="USD" aria-pressed="false">USD</button></div>
           </nav>
         </details>
       </div>
     </header>
-    <main id="main"><slot/></main>
+    <main id="main"><slot /></main>
     <footer class="site-footer">
       <div class="container">
         <div class="footer-top">
-          <div class="footer-about">
-            <a class="brand brand-footer" href="/" aria-label="Hostamble homepage"><img src="/brand/open-waypoint-inverse.svg" width="40" height="40" alt=""/><span>Hostamble</span></a>
-            <p>A better home for your website. Hosting, domains and support for moving forward at your own pace.</p>
+          <div>
+            <a class="brand brand-footer" href="/"><span class="footer-monogram">h.</span><span>hostamble<span class="brand-dot">.</span></span></a>
+            <p>Space for your next great idea. Hosting, domains, and a little less complexity.</p>
             <a class="footer-email" href="mailto:support@hostamble.com">support@hostamble.com ↗</a>
           </div>
-          <div class="footer-links"><h3>Hosting</h3><a href="/shared-hosting">Shared Hosting</a><a href="/wordpress-hosting">WordPress Hosting</a><a href="/business-email">Business Email</a><a href="/vps">VPS Hosting</a></div>
-          <div class="footer-links"><h3>Discover</h3><a href="/domains">Find a domain</a><a href="/guides">Guides</a><a href="/about">About Hostamble</a><a href="/support">Get support</a></div>
-          <div class="footer-links"><h3>Account & trust</h3><a href={catalog.checkout.login}>Client area ↗</a><a href={catalog.checkout.register}>Register ↗</a><a href={catalog.checkout.domainPrices}>Domain rates ↗</a><a href="https://www.trustpilot.com/review/hostamble.com">Trustpilot profile ↗</a><a href="/legal">Legal & policies</a></div>
+          <div class="footer-links"><h3>Hosting</h3><a href="/shared-hosting">Shared hosting</a><a href="/wordpress-hosting">WordPress hosting</a><a href="/business-email">Business email</a><a href="/vps">VPS hosting</a></div>
+          <div class="footer-links"><h3>Explore</h3><a href="/domains">Domains</a><a href="/guides">Guides</a><a href="/about">About us</a><a href="/support">Support</a></div>
+          <div class="footer-links"><h3>Account</h3><a href={catalog.checkout.login}>Client area ↗</a><a href={catalog.checkout.register}>Create account ↗</a><a href={catalog.checkout.domainPrices}>All domain prices ↗</a><a href="https://www.trustpilot.com/review/hostamble.com">Trustpilot ↗</a></div>
         </div>
-        <div class="footer-bottom"><span>© {new Date().getFullYear()} Hostamble</span><span>Monday–Saturday · Chat & WhatsApp 9 AM–8 PM IST</span><span>Hosting billed in INR; confirm final charges before ordering.</span></div>
+        <div class="footer-bottom"><span>© {new Date().getFullYear()} Hostamble. All rights reserved.</span><span>Built for what’s next.</span><span>Prices shown in INR. Final charges and eligibility are confirmed at checkout.</span></div>
       </div>
     </footer>
     <script>import '../scripts/site.js';</script>

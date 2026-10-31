@@ -9,26 +9,26 @@ import InfoSplit from '../components/InfoSplit.astro';
 import StepsSection from '../components/StepsSection.astro';
 import FAQSection from '../components/FAQSection.astro';
 ---
-<BaseLayout title="Shared Web Hosting Plans | Hostamble" description="Explore Hostamble shared hosting plans, cPanel, NVMe storage, bandwidth limits, billing periods, and getting your first website online.">
+<BaseLayout title="Shared Web Hosting Plans | Hostamble" description="Explore Hostamble shared hosting plans, cPanel, SSD storage, bandwidth limits, billing periods, and getting your first website online.">
   <PageHero eyebrow="SHARED HOSTING" title="Your first website deserves a great home." description="A straightforward starting point for portfolios, blogs, and growing business sites. Compare the essentials and move at your own pace." icon="▦" />
   <FeatureCards
     eyebrow="THE EVERYDAY ESSENTIALS"
     title="A good foundation for"
     accent="what's next."
-    description="Clear building blocks for websites that don't need a dedicated server. Current package details and renewal terms should be reviewed before ordering."
+    description="Clear building blocks for websites that don't need a dedicated server. Exact current entitlements are confirmed in the client area."
     tone="cream"
     items={[
-      {tag:'01 / STORAGE',symbol:'▦',title:'Space for your files',text:'The published shared plans list 4 GB to 25 GB of NVMe storage, depending on the tier you select.'},
+      {tag:'01 / STORAGE',symbol:'▦',title:'Space for your files',text:'The published shared plans list 4 GB to 25 GB of SSD storage, depending on the tier you select.'},
       {tag:'02 / TOOLS',symbol:'⌘',title:'Familiar cPanel access',text:'Manage common hosting tasks through cPanel on the listed shared hosting plans.'},
-      {tag:'03 / PROTECTION',symbol:'✓',title:'SSL and backups',text:'SSL and daily JetBackup appear in the listed plans. Check current daily backup retention (last three days) and restoration terms before ordering.'}
+      {tag:'03 / PROTECTION',symbol:'✓',title:'SSL and backups',text:'SSL and JetBackup appear in the listed plans. Check current backup retention and restoration terms before ordering.'}
     ]}
   />
-  <PricingGrid family="shared" heading="Find your kind of hosting." description="Compare explicit monthly, quarterly, semiannual, and annual totals. Check the billing period, resource limits and final price before completing your order."/>
+  <PricingGrid family="shared" heading="Find your kind of hosting." description="Compare explicit monthly, quarterly, semiannual, and annual totals. Your WHMCS checkout confirms the final charge and plan details."/>
   <InfoSplit
     eyebrow="PICK YOUR FIT"
     title="Start small."
     accent="Leave room to grow."
-    paragraphs={['You do not need the biggest plan to publish a first website. Think about the number of sites, how much storage you expect to use, and whether your bandwidth needs may change.', 'The plan comparison lists Basic for one website, Starter for up to three, and Elite for up to ten. Confirm those limits at checkout and check current limits before purchase.']}
+    paragraphs={['You do not need the biggest plan to publish a first website. Think about the number of sites, how much storage you expect to use, and whether your bandwidth needs may change.', 'The current draft lists Basic for one website, Starter for up to three, and Elite for up to ten. Confirm those limits at checkout because older service pages have conflicting specifications.']}
     points={['Basic — a single-site starting point','Starter — several websites in one account','Elite — more sites and a larger listed allocation']}
     panelLabel="CHOOSE WITH CONFIDENCE"
     panelTitle="Plan around your websites, not guesses."
@@ -43,7 +43,7 @@ import FAQSection from '../components/FAQSection.astro';
     accent="your new website."
     description="A sensible route from choosing a plan to checking that your website is ready to share."
     steps={[
-      {title:'Review your plan',text:'Compare site allowances, storage, bandwidth and billing-period totals. Check the product details before ordering.'},
+      {title:'Review your plan',text:'Compare site allowances, storage, bandwidth and billing-period totals. Confirm final details in WHMCS.'},
       {title:'Connect a domain',text:'Use a domain you already own or search for a new name and check live availability.'},
       {title:'Publish and check',text:'Follow the hosting setup details, upload your site or install your software, and test your pages and SSL.'}
     ]}
@@ -56,9 +56,9 @@ import FAQSection from '../components/FAQSection.astro';
     accent="We're here."
     intro="Everything worth asking before you select a shared hosting plan."
     questions={[
-      {question:'How many websites can each plan host?',answer:'The current plan list shows one site for Basic, three for Starter, and ten for Elite. Confirm resource limits and renewal terms before purchase.'},
-      {question:'Is SSL included?',answer:'SSL and Imunify360 are included with the shared hosting offering. Check configuration details for your domain.'},
-      {question:'How is the six-month offer applied?',answer:'The free .us.cc domain offer is for qualifying six-month hosting. Registration duration, renewal fees and exact eligible plans are pending confirmation.'},
+      {question:'How many websites can each plan host?',answer:'The draft catalog lists one site for Basic, three for Starter, and ten for Elite. Please verify the live limits in checkout before purchasing.'},
+      {question:'Is SSL included?',answer:'The published shared plan descriptions list free SSL certificates. Check service activation instructions and coverage for your domain.'},
+      {question:'How is the six-month offer applied?',answer:'The .US.CC promotion is associated with eligible semiannual hosting purchases, not every domain search. Eligibility and final terms must be checked during checkout.'},
       {question:'Can I compare the full billing totals?',answer:'Yes. Select Monthly, 3 months, 6 months, or Yearly above to see the corresponding published total in Indian rupees. Checkout remains the final billing authority.'},
       {question:'Where can I get help with account access?',answer:'Use Hostamble’s existing client area for account management or visit the support page for help options.'}
     ]}
