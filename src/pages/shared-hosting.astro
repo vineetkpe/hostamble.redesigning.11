@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PricingGrid from '../components/PricingGrid.astro';
+import DomainSearch from '../components/DomainSearch.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+<BaseLayout title="Shared Web Hosting Plans | Hostamble" description="Compare Basic, Starter and Elite shared hosting plans. Explore storage, bandwidth and billing periods with pricing in INR.">
+  <PageHero eyebrow="SHARED HOSTING" title="Your first website deserves a great home." description="A simple starting point for blogs, portfolios, and growing business websites. Choose what fits your next step." icon="▦" />
+  <PricingGrid family="shared" heading="Find your kind of hosting." description="Compare monthly, three-month, six-month, and annual billing totals. The live checkout is the final source for charges and eligibility." />
+  <section class="faq-section section-pad"><div class="container faq-grid"><div><span class="eyebrow"><span class="eyebrow-line"></span> GOOD TO KNOW</span><h2>Questions? <em>We've got answers.</em></h2><p>Here's how the listed shared hosting plans work.</p></div><div class="faq-list">
+    <details><summary>What do the plans include?</summary><p>The listed plans include SSD storage, bandwidth allocations, SSL, cPanel access, and JetBackup. Exact active specifications should be confirmed at checkout.</p></details>
+    <details><summary>Can I host more than one website?</summary><p>Starter is listed for up to three websites, and Elite for up to ten. Basic is listed for one website.</p></details>
+    <details><summary>How do I check a domain name?</summary><p>Search using the domain form below. You will continue to Hostamble's live domain registration system for availability and pricing.</p></details>
+    <details><summary>Where do I manage my hosting?</summary><p>Existing customers use Hostamble's client area for account and billing management.</p></details>
+  </div></div></section>
+  <DomainSearch compact />
+  <ContactCTA />
+</BaseLayout>

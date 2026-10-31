@@ -1,0 +1,198 @@
+{
+  "currency": "INR",
+  "checkout": {
+    "login": "https://hostamble.com/dash/clientarea.php",
+    "register": "https://hostamble.com/dash/register.php",
+    "sharedStore": "https://hostamble.com/dash/index.php?rp=/store/sharedhosting",
+    "wordpressStore": "https://hostamble.com/dash/index.php?rp=/store/wordpresshosting",
+    "domainSearch": "https://hostamble.com/dash/cart.php",
+    "domainTransfer": "https://hostamble.com/dash/cart.php?a=add&domain=transfer",
+    "domainPrices": "https://hostamble.com/dash/index.php/domain/pricing"
+  },
+  "fx": {
+    "inrPerUsd": null,
+    "source": null,
+    "observedOn": null,
+    "maxAgeDays": 7
+  },
+  "hosting": {
+    "shared": {
+      "name": "Shared Hosting",
+      "cycles": [
+        "monthly",
+        "quarterly",
+        "semiannual",
+        "annual"
+      ],
+      "plans": [
+        {
+          "id": "shared-basic",
+          "name": "Basic",
+          "description": "Launch your first website",
+          "featured": false,
+          "pricingPaise": {
+            "monthly": 4900,
+            "quarterly": 14700,
+            "semiannual": 29400,
+            "annual": 58800
+          },
+          "features": [
+            "1 website",
+            "4 GB SSD storage",
+            "40 GB bandwidth",
+            "Free SSL certificate",
+            "cPanel access",
+            "JetBackup included"
+          ]
+        },
+        {
+          "id": "shared-starter",
+          "name": "Starter",
+          "description": "Grow beyond a single site",
+          "featured": true,
+          "pricingPaise": {
+            "monthly": 9900,
+            "quarterly": 29700,
+            "semiannual": 59400,
+            "annual": 118800
+          },
+          "features": [
+            "3 websites",
+            "10 GB SSD storage",
+            "100 GB bandwidth",
+            "Free SSL certificate",
+            "cPanel access",
+            "JetBackup included"
+          ]
+        },
+        {
+          "id": "shared-elite",
+          "name": "Elite",
+          "description": "Room for your next big idea",
+          "featured": false,
+          "pricingPaise": {
+            "monthly": 14900,
+            "quarterly": 44700,
+            "semiannual": 89400,
+            "annual": 178800
+          },
+          "features": [
+            "10 websites",
+            "25 GB SSD storage",
+            "250 GB bandwidth",
+            "Free SSL certificate",
+            "cPanel access",
+            "JetBackup included"
+          ]
+        }
+      ]
+    },
+    "wordpress": {
+      "name": "WordPress Hosting",
+      "cycles": [
+        "monthly",
+        "annual"
+      ],
+      "plans": [
+        {
+          "id": "wp-starter",
+          "name": "Starter",
+          "description": "One WordPress project",
+          "featured": false,
+          "pricingPaise": {
+            "monthly": 5900,
+            "annual": 70800
+          },
+          "features": [
+            "1 domain",
+            "4 GB SSD storage",
+            "1 email account",
+            "Free SSL certificate",
+            "JetBackup 5",
+            "BitNinja security"
+          ]
+        },
+        {
+          "id": "wp-essential",
+          "name": "Essential",
+          "description": "For a growing WordPress site",
+          "featured": true,
+          "pricingPaise": {
+            "monthly": 9900,
+            "annual": 118800
+          },
+          "features": [
+            "Up to 3 domains",
+            "8 GB SSD storage",
+            "2 email accounts",
+            "Free SSL certificate",
+            "JetBackup 5",
+            "BitNinja security"
+          ]
+        },
+        {
+          "id": "wp-growth",
+          "name": "Growth",
+          "description": "More room for content",
+          "featured": false,
+          "pricingPaise": {
+            "monthly": 13900,
+            "annual": 116800
+          },
+          "features": [
+            "Up to 5 domains",
+            "15 GB SSD storage",
+            "3 email accounts",
+            "Free SSL certificate",
+            "JetBackup 5",
+            "BitNinja security"
+          ]
+        },
+        {
+          "id": "wp-prime",
+          "name": "Prime",
+          "description": "Multiple WordPress projects",
+          "featured": false,
+          "pricingPaise": {
+            "monthly": 17900,
+            "annual": 214800
+          },
+          "features": [
+            "Up to 10 domains",
+            "25 GB SSD storage",
+            "5 email accounts",
+            "Free SSL certificate",
+            "JetBackup 5",
+            "BitNinja security"
+          ]
+        }
+      ]
+    }
+  },
+  "domains": [
+    {
+      "id": "com",
+      "tld": ".com",
+      "registerPaise": 129900,
+      "renewPaise": 129900
+    },
+    {
+      "id": "in",
+      "tld": ".in",
+      "registerPaise": 81480,
+      "renewPaise": 81480
+    },
+    {
+      "id": "online",
+      "tld": ".online",
+      "registerPaise": 29900,
+      "renewPaise": 499900
+    },
+    {
+      "id": "site",
+      "tld": ".site",
+      "registerPaise": 19900,
+      "renewPaise": 459900
+    }
+  ]
+}

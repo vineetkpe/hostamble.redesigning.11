@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+<BaseLayout title="VPS Hosting Enquiries | Hostamble" description="Ask Hostamble about virtual private servers, resource options, management level and current VPS prices.">
+  <PageHero eyebrow="VPS HOSTING" title="Make room for more control." description="More demanding projects need a different conversation. Explore VPS options with the team before you commit." icon="⌘"/>
+  <section class="inquiry-section section-pad"><div class="container inquiry-grid"><div><span class="eyebrow"><span class="eyebrow-line"></span> GO FURTHER</span><h2>Built around <em>your requirements.</em></h2><p>Tell the team about your CPU, memory, storage, operating-system, and management needs. Current VPS tiers, specifications, and prices need confirmation before we can publish a comparison.</p></div><div class="inquiry-card"><span class="inquiry-icon">⌘</span><h3>Need a VPS quote?</h3><p>Share what you're building and ask about technical requirements, backups, support boundaries, and billing terms.</p><a class="button button-dark" href="mailto:support@hostamble.com?subject=VPS%20hosting%20enquiry">Ask about VPS ↗</a><p class="inquiry-footnote">Do not assume managed administration or a published price.</p></div></div></section>
+  <ContactCTA />
+</BaseLayout>

@@ -1,0 +1,6 @@
+/shared-hosting.html /shared-hosting 301
+/wordpress-hosting.html /wordpress-hosting 301
+/vps-server.html /vps 301
+/enterprices-email.html /business-email 301
+/legal-agreement.html /legal 302
+# Other routes require a verified inventory before implementing redirects.

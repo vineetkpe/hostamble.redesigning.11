@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import DomainSearch from '../components/DomainSearch.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import catalog from '../data/catalog.json';
+import {formatINR} from '../lib/pricing.mjs';
+---
+<BaseLayout title="Domain Names & Registration | Hostamble" description="Search for your domain name and review current indicative .com, .in, .online and .site registration and renewal prices.">
+  <PageHero eyebrow="DOMAINS" title="Every great idea deserves a name." description="Find the name that fits, then check live availability in Hostamble's domain registration system." icon="↗"/>
+  <DomainSearch compact />
+  <section class="domain-price-section section-pad"><div class="container">
+    <div class="section-intro split-intro"><div><span class="eyebrow"><span class="eyebrow-line"></span> DOMAIN PRICING</span><h2>A name that <em>means something.</em></h2></div><p>Indicative first-year and renewal prices, captured 31 October 2026. Promotions and premium domains may vary.</p></div>
+    <div class="domain-price-table" role="region" aria-label="Domain pricing table" tabindex="0"><table><thead><tr><th scope="col">Extension</th><th scope="col">Register / first year</th><th scope="col">Renewal / year</th><th scope="col"><span class="sr-only">Action</span></th></tr></thead><tbody>{catalog.domains.map(domain => <tr><th scope="row">{domain.tld}</th><td data-domain-money={domain.registerPaise}>{formatINR(domain.registerPaise)}</td><td data-domain-money={domain.renewPaise}>{formatINR(domain.renewPaise)}</td><td><a href={catalog.checkout.domainPrices}>Check live pricing ↗</a></td></tr>)}</tbody></table></div>
+    <p class="currency-note" data-domain-currency-note>Prices shown in INR. Confirm final prices during checkout.</p>
+    <div class="domain-bottom-actions"><a class="button button-dark" href={catalog.checkout.domainTransfer}>Transfer a domain ↗</a><a class="text-link" href={catalog.checkout.domainPrices}>See all extensions →</a></div>
+  </div></section>
+  <ContactCTA />
+</BaseLayout>

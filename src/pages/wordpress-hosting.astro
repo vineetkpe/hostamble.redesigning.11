@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PricingGrid from '../components/PricingGrid.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+<BaseLayout title="WordPress Hosting Plans | Hostamble" description="Compare Hostamble WordPress hosting plans: Starter, Essential, Growth, and Prime, with INR monthly and annual prices.">
+  <PageHero eyebrow="WORDPRESS HOSTING" title="Make something wonderful with WordPress." description="Your blog, your portfolio, your business — give it space to grow with plans made for WordPress projects." icon="W" />
+  <PricingGrid family="wordpress" heading="A WordPress plan with your name on it." description="Choose a monthly or annual billing period. Storage and limits are provisional pending comparison with the live checkout."/>
+  <section class="value-section section-pad"><div class="container"><div class="section-intro"><span class="eyebrow"><span class="eyebrow-line"></span> YOUR CREATIVE CORNER</span><h2>Focus on the <em>fun part.</em></h2></div><div class="value-grid">
+    <article><span class="value-icon">01 W</span><h3>A familiar home</h3><p>Build with the WordPress ecosystem you know, from personal blogs to professional websites.</p></article>
+    <article><span class="value-icon">02 ✓</span><h3>SSL on listed plans</h3><p>SSL certificates are included in the published WordPress plan details.</p></article>
+    <article><span class="value-icon">03 ✳</span><h3>Backup tools</h3><p>JetBackup appears in the published plan specifications. Confirm current recovery terms with support.</p></article>
+  </div></div></section>
+  <ContactCTA />
+</BaseLayout>

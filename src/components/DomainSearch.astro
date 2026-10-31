@@ -1,0 +1,30 @@
+---
+const {compact = false} = Astro.props;
+---
+<section class:list={['domain-section', compact && 'domain-compact']} id="domain-search">
+  <div class="container">
+    <div class="domain-panel">
+      <div class="domain-heading">
+        <span class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR NAME</span>
+        <h2>That perfect domain? <em>It's out there.</em></h2>
+        <p>A memorable name makes a good first impression. Search yours and continue to Hostamble's live domain checker.</p>
+      </div>
+      <form class="domain-form" action="https://hostamble.com/dash/cart.php" method="GET" role="search" aria-label="Find a domain">
+        <input type="hidden" name="a" value="add" />
+        <input type="hidden" name="domain" value="register" />
+        <label class="sr-only" for={compact ? 'domain-compact-query' : 'domain-query'}>Domain name</label>
+        <span aria-hidden="true" class="domain-magnifier">⌕</span>
+        <input id={compact ? 'domain-compact-query' : 'domain-query'} name="query" type="text" placeholder="yourbigidea.com" required autocomplete="off" spellcheck="false" maxlength="253" />
+        <button type="submit" class="button button-dark">Search domain <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="domain-disclaimer">Live availability and final prices are checked securely in the client area.</p>
+      <div class="domain-ticker" data-ticker>
+        <div class="ticker-runner">
+          <span class="ticker-set"><b>.com</b><span>the classic</span><b>.in</b><span>made for India</span><b>.online</b><span>your digital home</span><b>.site</b><span>your own space</span></span>
+          <span class="ticker-set" aria-hidden="true" inert><b>.com</b><span>the classic</span><b>.in</b><span>made for India</span><b>.online</b><span>your digital home</span><b>.site</b><span>your own space</span></span>
+        </div>
+        <button type="button" data-ticker-toggle aria-label="Pause domain ticker">Pause motion</button>
+      </div>
+    </div>
+  </div>
+</section>
