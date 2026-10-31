@@ -115,6 +115,79 @@ try {
     const response=await fetch(base+path);
     assert.equal(response.status,200,'Broken internal route '+path);
   }
+
+  // Contrast audit covers actual visible text in every route at mobile and desktop.
+  // WCAG AA: 4.5:1 regular text; 3:1 large or bold large text.
+  const contrastFailures=[];
+  let checkedTextNodes=0;
+  for (const viewport of [375,1440]) {
+    await page.setViewportSize({width:viewport,height:900});
+    for (const path of pages) {
+      await page.goto(base + path,{waitUntil:'load'});
+      const result=await page.evaluate(() => {
+        const parse = input => {
+          const match=(input||'').match(/rgba?\(\s*([\d.]+)[,\s]+\s*([\d.]+)[,\s]+\s*([\d.]+)(?:[,\s/]+\s*([\d.]+))?\s*\)/i);
+          return match ? [+match[1],+match[2],+match[3],match[4]===undefined?1:+match[4]] : null;
+        };
+        const blend=(foreground,background) => foreground ? foreground.slice(0,3).map((channel,i)=>channel*foreground[3]+background[i]*(1-foreground[3])):background;
+        const luma=rgb=>[0,1,2].map(i=>{
+          const c=rgb[i]/255;
+          return c<=.04045?c/12.92:Math.pow((c+.055)/1.055,2.4);
+        }).reduce((total,c,i)=>total+c*[.2126,.7152,.0722][i],0);
+        const contrast=(a,b)=>{const first=luma(a),second=luma(b);return (Math.max(first,second)+.05)/(Math.min(first,second)+.05);};
+        const background=el=>{
+          const ancestors=[];
+          for(let p=el;p;p=p.parentElement)ancestors.push(p);
+          let color=[247,245,240];
+          for(const p of ancestors.reverse()){
+            const style=getComputedStyle(p);
+            const gradient=style.backgroundImage.match(/(?:rgba?\([\d.,% /]+\))/);
+            if(gradient) {
+              const c=parse(gradient[0]);
+              if(c)color=blend(c,color);
+            }
+            const current=parse(style.backgroundColor);
+            if(current)color=blend(current,color);
+          }
+          return color;
+        };
+        const issues=[];
+        let total=0;
+        const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+        while(walker.nextNode()){
+          const node=walker.currentNode;
+          const text=node.textContent.trim().replace(/\s+/g,' ');
+          if(!text)continue;
+          const el=node.parentElement;
+          if(!el || el.closest('[aria-hidden="true"],[hidden],[inert],script,style,noscript,.sr-only,[disabled]'))continue;
+          const style=getComputedStyle(el);
+          if(style.display==='none'||style.visibility!=='visible')continue;
+          const range=document.createRange();
+          range.selectNodeContents(node);
+          if(![...range.getClientRects()].some(r=>r.width>1 && r.height>1))continue;
+          const foreground=parse(style.color);
+          if(!foreground)continue;
+          const bg=background(el);
+          const ratio=contrast(blend(foreground,bg),bg);
+          const size=parseFloat(style.fontSize);
+          const weight=parseInt(style.fontWeight,10)||400;
+          const large=size>=24 || (size>=18.66 && weight>=700);
+          const threshold=large?3:4.5;
+          total++;
+          if(ratio+0.02<threshold){
+            issues.push({text:text.slice(0,75),selector:el.tagName.toLowerCase()+(el.className && typeof el.className==='string'?'.'+el.className.split(/\s+/).join('.'):''),ratio:+ratio.toFixed(2),required:threshold,background:bg.map(Math.round),foreground:foreground.slice(0,3)});
+          }
+        }
+        return {total,issues};
+      });
+      checkedTextNodes+=result.total;
+      for (const issue of result.issues)contrastFailures.push({path,width:viewport,...issue});
+    }
+  }
+  console.log('Contrast audit: '+checkedTextNodes+' visible text nodes checked across eight routes and two viewports.');
+  if (contrastFailures.length)console.error('Contrast failures: '+JSON.stringify(contrastFailures.slice(0,35)));
+  assert.equal(contrastFailures.length,0,'Text contrast must meet WCAG AA across sampled pages and viewports');
+
   mkdirSync('.browser-artifacts',{recursive:true});
   await page.emulateMedia({reducedMotion:'no-preference'});
   await page.setViewportSize({width:1440,height:900});
