@@ -28,7 +28,8 @@ jobs:
       # Simulate Cloudflare's exact deploy command from a fresh checkout:
       # dist/ must NOT exist before Wrangler invokes its configured build step.
       - name: Ensure no prebuilt dist exists
-        run: node -e "require('node:fs').rmSync('dist', { recursive: true, force: true })"
+        run: |
+          node -e "require('node:fs').rmSync('dist', { recursive: true, force: true })"
       - name: Test Wrangler deploy from clean checkout (runs Astro build)
         run: npx wrangler deploy --dry-run --outdir .wrangler-dry-run
         env:
