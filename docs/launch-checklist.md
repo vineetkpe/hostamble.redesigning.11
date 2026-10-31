@@ -9,13 +9,13 @@ This file is internal workflow documentation and should **not** be exposed as pu
 - [ ] Confirm tax treatment, renewal hosting charges, refund applicability, free domain rules, and plan cycle options directly with WHMCS.
 - [ ] Verify each plan's WHMCS product ID and exact billing-cycle mapping before deep-linking to a selected plan; avoid generic checkout links if they cannot preserve selections.
 - [ ] Recheck domain first-year and renewal prices (.com ₹1299/₹1299, .in ₹814.80/₹814.80, .online ₹299/₹4999, .site ₹199/₹4599), and any premium-domain fees.
-- [ ] Verify .US.CC promotional terms, eligible semiannual hosting plans, region/availability, and whether the domain is free only as a bundled offer.
+- [ ] Verify .us.cc promotional terms, eligible semiannual hosting plans, region/availability, and whether the domain is free only as a bundled offer.
 - [ ] Verify Business Email and VPS commercial packages; until then they are enquiry-only.
 - [ ] Source a current dated INR/USD exchange rate; record rate, date, and source in catalog. Keep USD disabled if unavailable or stale.
 
 ## Brand and content
 
-- [ ] Provide/approve final Hostamble logo artwork, font license files, palette and copy. Existing repo contained no approved concept assets.
+- [x] Implement owner-approved Open Waypoint SVG and ivory/charcoal/burnt-orange tokens across pages. [ ] Obtain original concept source, brand guideline document and local font files for final visual/font licensing review.
 - [ ] Review all support and marketing language with the owner. No unverified uptime metrics, customer reviews, savings or guarantees should be added.
 - [ ] Approve full legal policy text and verify migrated terms/privacy/refund destinations.
 
