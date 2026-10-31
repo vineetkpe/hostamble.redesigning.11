@@ -568,3 +568,176 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[
 
 /* The hero's success checkmarks must remain green and readable on charcoal. */
 .hero .tick-mark { color:var(--status-success-on-dark); }
+
+
+/* Light layered treatment inspired by Hostamble's light storefront direction.
+   Color and background treatments only: existing content, layout, type, artwork,
+   keyframes, motion preferences and section order remain unchanged. */
+:root {
+  --warm-canvas:#FFFCF9;
+  --soft-orange:#FFF1E4;
+  --soft-orange-edge:#F2D5BE;
+  --soft-silver:#F7F7FA;
+  --lift-shadow:0 18px 50px rgba(32,33,51,.065);
+}
+body {
+  background-color:var(--background-main);
+  background-image:radial-gradient(ellipse at 84% 3%,#FFF5EC 0%,transparent 32%),
+                   linear-gradient(180deg,var(--background-main) 0%,#FFFCFA 51%,var(--background-main) 100%);
+}
+/* Keep the original hero illustration and layout, but turn the full-bleed dark
+   field into an airy warm-to-cool layered surface. */
+.hero {
+  color:var(--dark-charcoal);
+  background-color:var(--background-main);
+  background-image:radial-gradient(ellipse 66% 81% at 96% 22%,#FFE8D1 0%,transparent 67%),
+                   radial-gradient(ellipse 56% 76% at 4% 95%,#F1F2F8 0%,transparent 78%),
+                   linear-gradient(125deg,#FFFFFF 8%,#FFFAF4 59%,#F8F9FD 100%);
+}
+.hero-glow { background:var(--orange-bright);opacity:.11; }
+.hero h1,.hero h1 em { color:var(--dark-charcoal); }
+.hero h1 em { color:var(--orange-primary); }
+.hero .light-eyebrow { color:var(--orange-text); }
+.hero .light-link { color:var(--orange-text); }
+.hero .hero-lede,.hero .hero-footnotes { color:var(--text-secondary); }
+.hero .tick-mark { color:var(--status-success); }
+.hero .floating-star { color:var(--orange-primary); }
+.hero .orbit { border-color:rgba(211,117,29,.28); }
+.server-console {
+  border-color:rgba(211,117,29,.20);
+  background:linear-gradient(150deg,#FFFFFF 0%,#FFF9F2 58%,#F3F5F9 100%);
+  box-shadow:0 30px 85px rgba(32,33,51,.13),0 0 0 8px rgba(255,255,255,.55);
+}
+.console-top,.console-bottom { background:rgba(255,255,255,.78); }
+.console-main { background:transparent; }
+.hero-bottom-stroke { background:var(--background-main); }
+.trust-strip {
+  background-color:var(--background-main);
+  background-image:linear-gradient(90deg,#FFF9F2 0%,#FFFFFF 48%,#F8F9FC 100%);
+}
+/* Vary the large white fields gently instead of applying flat color blocks. */
+.products-section,.spotlight-cream,.spotlight-mint,.chooser-section,.value-section {
+  background-color:var(--background-main);
+  background-image:radial-gradient(ellipse at 91% 7%,#FFF2E5 0%,transparent 37%),
+                   linear-gradient(150deg,#FFFFFF 0%,#FAFAFC 100%);
+}
+.domain-section,.promo-section,.inquiry-section,.support-section,.guides-section {
+  background-color:var(--background-main);
+  background-image:radial-gradient(ellipse at 4% 80%,#FFF3E8 0%,transparent 40%),
+                   linear-gradient(115deg,#FFFFFF 0%,#F6F7FB 100%);
+}
+.pricing-section,.domain-price-section,.info-split-section,.spotlight-white {
+  background-color:var(--background-main);
+  background-image:radial-gradient(ellipse at 95% 2%,#FFF5EB 0%,transparent 42%),
+                   linear-gradient(135deg,#FFFFFF 15%,#F9FAFD 100%);
+}
+.faq-section,.journey-light,.cta-section {
+  background-color:var(--background-alt);
+  background-image:radial-gradient(ellipse at 83% 12%,#FFF2E5 0%,transparent 43%),
+                   linear-gradient(145deg,#F8F8FA 0%,#FFFFFF 100%);
+}
+/* Detail cards remain light and layered without bringing back rainbow pastels. */
+.product-mint,.product-peach,.product-lavender,.product-yellow,.product-blue,
+.spotlight-card:nth-child(2),.spotlight-card:nth-child(3),
+.chooser-card:nth-child(2),.chooser-card:nth-child(3) {
+  background-color:#FFFFFF;
+  background-image:linear-gradient(153deg,#FFFFFF 0%,#FFF9F3 100%);
+  border-color:var(--border-neutral);
+}
+.product-card,.spotlight-card,.chooser-card,.value-grid article,.plan-card,.support-card,.guide-card {
+  box-shadow:0 12px 32px rgba(32,33,51,.035);
+}
+.product-card:hover,.spotlight-card:hover,.chooser-card:hover {
+  box-shadow:var(--lift-shadow);
+}
+.spotlight-card:nth-child(3),.chooser-card:nth-child(3),.product-blue {
+  background-image:linear-gradient(150deg,#FFFFFF 0%,#F5F6FA 100%);
+}
+.domain-panel {
+  background-color:#FFF3E7;
+  background-image:radial-gradient(circle at 92% 5%,#FFE1C3 0%,transparent 39%),
+                   linear-gradient(115deg,#FFF9F2 0%,#F8F9FC 100%);
+  border:1px solid var(--soft-orange-edge);
+  box-shadow:var(--lift-shadow);
+}
+.domain-panel::after { color:rgba(211,117,29,.11); }
+.domain-heading p,.domain-disclaimer { color:var(--text-secondary); }
+.domain-price-card,.domain-rate-card {
+  background-color:#FFFFFF;
+  background-image:linear-gradient(140deg,#FFFFFF,#FFFBF8);
+}
+.promo-art,.info-visual {
+  background-color:#FFF7EF;
+  background-image:radial-gradient(circle at 68% 21%,#FFE2C4 0%,transparent 55%),
+                   linear-gradient(145deg,#FFF9F3,#F4F6FA);
+}
+.inquiry-card,.pricing-offer-banner {
+  background-color:#FFF5E9;
+  background-image:linear-gradient(110deg,#FFF1E2 0%,#FFFFFF 100%);
+  border-color:var(--soft-orange-edge);
+}
+.plan-featured {
+  background-color:#FFFFFF;
+  background-image:linear-gradient(180deg,#FFF8EF 0%,#FFFFFF 58%);
+  border-color:var(--orange-primary);
+  box-shadow:0 20px 55px rgba(211,117,29,.09);
+}
+/* The product hero is the largest cause of the overly dark interior pages. */
+.inner-hero {
+  color:var(--dark-charcoal);
+  background-color:#FFFFFF;
+  background-image:radial-gradient(ellipse at 90% 40%,#FFEAD6 0%,transparent 52%),
+                   linear-gradient(120deg,#FFFFFF 10%,#F7F8FC 100%);
+  border-bottom:1px solid var(--border-neutral);
+}
+.inner-hero h1 { color:var(--dark-charcoal); }
+.inner-hero p,.inner-hero-art b { color:var(--text-secondary); }
+.inner-hero .light-eyebrow { color:var(--orange-text); }
+.inner-hero-art span { color:var(--orange-primary); }
+.inner-hero-art i { border-color:rgba(211,117,29,.25); }
+/* Shift the isolated dark callouts into softly layered ivory surfaces. */
+.cta-panel {
+  color:var(--dark-charcoal);
+  background-color:#FFF8F0;
+  background-image:radial-gradient(ellipse at 92% 0%,#FFE0BD 0%,transparent 55%),
+                   linear-gradient(125deg,#FFF9F3 0%,#FFFFFF 100%);
+  border:1px solid var(--soft-orange-edge);
+  box-shadow:var(--lift-shadow);
+}
+.cta-panel h2 { color:var(--dark-charcoal); }
+.cta-panel p { color:var(--text-secondary); }
+.cta-panel .light-eyebrow,.cta-panel .light-link { color:var(--orange-text); }
+.cta-spark { color:rgba(211,117,29,.10); }
+.journey-dark {
+  color:var(--dark-charcoal);
+  background-color:#F8F8FA;
+  background-image:radial-gradient(ellipse at 10% 25%,#FFF1E3 0%,transparent 45%),
+                   linear-gradient(115deg,#FFFFFF 0%,#F7F8FC 100%);
+}
+.journey-dark .journey-steps li {
+  background-color:#FFFFFF;
+  background-image:linear-gradient(145deg,#FFFFFF,#FFFAF5);
+  border-color:var(--border-neutral);
+}
+.journey-dark .journey-steps h3,
+.journey-dark .journey-head h2 { color:var(--dark-charcoal); }
+.journey-dark .journey-head p,.journey-dark .journey-steps p { color:var(--text-secondary); }
+.journey-dark .light-eyebrow { color:var(--orange-text); }
+.journey-dark .eyebrow-line { background:var(--orange-primary); }
+.not-found {
+  color:var(--dark-charcoal);
+  background-color:#FFFFFF;
+  background-image:radial-gradient(ellipse at 82% 26%,#FFEBD9 0%,transparent 46%),
+                   linear-gradient(130deg,#FFFFFF,#F7F8FC);
+}
+.not-found h1 { color:var(--dark-charcoal); }
+.not-found p { color:var(--text-secondary); }
+.not-found em { color:var(--orange-primary); }
+/* A single calm charcoal footer anchors the light page; keep the original
+   footer layout, but add subtle light-to-dark tonal depth instead of a slab. */
+.site-footer {
+  background-color:var(--dark-charcoal);
+  background-image:radial-gradient(ellipse at 90% 7%,#34334C 0%,transparent 56%),
+                   linear-gradient(115deg,#202133 15%,#29283A 100%);
+}
+.footer-bottom { border-top-color:rgba(255,255,255,.20); }
