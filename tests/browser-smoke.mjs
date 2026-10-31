@@ -40,7 +40,11 @@ try {
       assert.equal(response?.status(), 200, 'Broken route '+path);
       const metrics = await page.evaluate(() => ({
         document: document.documentElement.scrollWidth,
-        viewport: window.innerWidth
+        viewport: window.innerWidth,
+        offenders: Array.from(document.querySelectorAll('body *')).map(el => {
+          const r=el.getBoundingClientRect();
+          return {tag:el.tagName.toLowerCase(),cls:typeof el.className==='string'?el.className.slice(0,80):'',left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};
+        }).filter(x => x.right > window.innerWidth+2 && x.left < window.innerWidth).sort((a,b)=>b.right-a.right).slice(0,15)
       }));
       assert(metrics.document <= metrics.viewport + 2,
         'Horizontal document overflow at '+width+'px on '+path+': '+JSON.stringify(metrics));
