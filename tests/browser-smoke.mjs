@@ -188,6 +188,23 @@ try {
   assert.equal(contrastFailures.length,0,'Text contrast must meet WCAG AA across sampled pages and viewports');
 
 
+
+  // The site's main surfaces should feel light and layered rather than solid charcoal.
+  // Check the actual browser-computed backgrounds without changing element geometry.
+  for (const width of [375,1440]) {
+    await page.setViewportSize({width,height:900});
+    for (const [route,selector] of [['/','.hero'],['/shared-hosting','.inner-hero'],['/wordpress-hosting','.inner-hero'],['/domains','.inner-hero'],['/vps','.inner-hero'],['/business-email','.inner-hero']]) {
+      await page.goto(base+route,{waitUntil:'load'});
+      const bg=await page.locator(selector).evaluate(el=>{
+        const s=getComputedStyle(el);
+        return {color:s.color,base:s.backgroundColor,layers:s.backgroundImage,dimensions:[el.offsetWidth,el.offsetHeight]};
+      });
+      assert(bg.layers.includes('gradient('),route+' '+selector+' lost its layered background at '+width);
+      assert(!bg.base.includes('32, 33, 51'),route+' '+selector+' reverted to solid dark charcoal at '+width);
+      assert(bg.dimensions[0]>0 && bg.dimensions[1]>0,route+' '+selector+' has no visible area');
+    }
+  }
+
   mkdirSync('.browser-artifacts',{recursive:true});
   await page.emulateMedia({reducedMotion:'no-preference'});
   await page.setViewportSize({width:1440,height:900});
