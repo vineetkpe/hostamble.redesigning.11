@@ -15,6 +15,7 @@
   --surface-white: #FFFFFF;
   --border-neutral: #DADAE0;
   --status-success: #257A4A;
+  --status-success-on-dark: #8DE0B4;
   --status-error: #B42318;
   --navy: var(--dark-charcoal); --ink: var(--dark-charcoal); --muted: var(--text-secondary);
   --lime: var(--orange-primary); --cream: var(--background-main); --line: var(--border-neutral); --radius: 24px;
@@ -564,3 +565,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[
 .plan-check,.tick-mark,.info-points li span { color:var(--status-success); }
 .plan-check { background:var(--background-alt); }
 .journey-dark .journey-steps li { background:var(--dark-charcoal);border-color:var(--text-secondary); }
+
+/* The hero's success checkmarks must remain green and readable on charcoal. */
+.hero .tick-mark { color:var(--status-success-on-dark); }
