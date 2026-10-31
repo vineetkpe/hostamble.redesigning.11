@@ -1,23 +1,21 @@
-# Page section inventory
+# Editorial section map
 
-The implementation keeps the landing page between **8 and 10 useful sections** and gives **every product page at least six**. These counts refer to real HTML `<section>` elements in the rendered build and are enforced in `scripts/verify-build.mjs`.
+The homepage contains **10 real content sections** and the five product pages retain at least **6** each; the build verifier checks the rendered HTML.
 
-| Page | Planned section count | Sections in display order |
-| --- | ---: | --- |
-| Home | 10 | Hero; product discovery; domain search; getting-started journey; shared hosting pricing; six-month promotion; everyday benefits; choose your path; FAQs; support CTA |
-| Shared Hosting | 8 | Hero; plan essentials; pricing; choosing a plan; launch steps; FAQs; domain search; support CTA |
-| WordPress Hosting | 8 | Hero; WordPress introduction; pricing; plan tools; setup steps; FAQs; domain search; support CTA |
-| Domains | 8 | Hero; domain search; extension guide; registration/renewal pricing; choosing a domain; registration steps; FAQs; support CTA |
-| Business Email | 8 | Hero; use cases; enquiry; requirements; setup steps; domain search; FAQs; support CTA |
-| VPS | 7 | Hero; introduction to VPS; possible use cases; quote enquiry; planning steps; FAQs; support CTA |
+Homepage order:
+1. Architectural hero — A better home for your website
+2. Five-product discovery
+3. Domain search with moving registration/renewal price cards
+4. Shared hosting plan introduction, billing selector, **.us.cc promotion immediately above cards**, and pricing comparison
+5. WordPress use cases
+6. Hosting foundation: NVMe/LiteSpeed, SSL/Imunify360, daily three-day JetBackup, cPanel
+7. Free cPanel-to-cPanel migration
+8. Support hours and channels, real Trustpilot link
+9. Buying FAQs
+10. Final CTA
 
-## Editorial principles
+Header, moving announcement and technology proof row appear above/around the hero without padding the section count. Footer follows the CTA.
 
-- Every section has a visitor job: discovery, comparison, education, action, or support.
-- Shared/WordPress prices and domain renewals continue to come from `src/data/catalog.json`. We do not add an independent hardcoded pricing table inside the new sections.
-- Business Email and VPS do **not** publish invented product pricing, specifications, guarantees or delivery dates. They explain how to request a verified quote.
-- Keep the domain search as an actual WHMCS handoff; never invent live availability.
-- Make sections responsive and keyboard friendly; use native FAQ disclosures and reduced-motion settings.
-- New copy and the visual identity are still subject to owner review and production business verification.
+Product pages keep dedicated hero, features, ordering/enquiry, preparation steps, FAQ, support and domain search as appropriate.
 
-To check: `npm run build && npm run verify:build`. CI also runs a Cloudflare Wrangler clean-checkout dry run before calling `verify:build`.
+Content source: owner-approved correction brief and existing central catalog. Unresolved product IDs, pricing discrepancy, domain renewal entitlements and policy details remain in launch documentation. 

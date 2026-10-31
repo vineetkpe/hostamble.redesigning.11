@@ -41,3 +41,29 @@ for (const page of productPages) {
 console.log('Homepage: ' + homeCount + ' sections');
 
 console.log('Static assets, section counts and preview protections passed');
+
+
+for(const p of ['index.html','shared-hosting/index.html','wordpress-hosting/index.html','domains/index.html','business-email/index.html','vps/index.html']){
+  const html=readFileSync(resolve(dist,p),'utf8');
+  assert(html.includes('/brand/open-waypoint.svg'),'Approved header logo missing: '+p);
+  assert(html.includes('/brand/open-waypoint-inverse.svg'),'Approved footer logo missing: '+p);
+  assert(!html.includes('BitNinja'),'Discontinued security product in '+p);
+  assert(!html.includes('data-price-period'),'Outdated ambiguous pricing period in '+p);
+}
+assert(home.includes('Get a free'),'Confirmed offer text absent');
+assert(home.includes('.us.cc'),'Offer TLD must be consistent');
+assert(home.includes('data-select-semiannual'),'Semiannual selection action missing');
+assert(home.includes('data-extension=".com"'),'Selectable domain price cards missing');
+assert(home.includes('data-domain-money'),'Domain prices must be catalog-derived');
+assert(home.indexOf('id="solutions"')<home.indexOf('id="domain-search"'),'Discovery must precede domain search');
+assert(home.indexOf('class="pricing-promo"')<home.indexOf('data-plans'),'Offer must appear above plan cards');
+assert(home.includes('name="a" value="add"')&&home.includes('name="domain" value="register"'),'Domain search hidden fields missing');
+assert(home.includes('Imunify360')&&home.includes('LiteSpeed')&&home.includes('JetBackup'),'Hosting proof missing');
+const siteScript=readFileSync(resolve('src/scripts/site.js'),'utf8');
+assert(siteScript.includes("setCycle(section,'semiannual'"),'Offer-to-semiannual handler missing');
+const sheet=readFileSync(resolve('src/styles/global.css'),'utf8');
+for(const token of ['#F7F5F0','#20211F','#A84223','#EDE9E1']){
+  assert(sheet.includes(token),'Approved palette token missing: '+token);
+}
+assert(!sheet.includes('#bdfb76')&&!sheet.includes('#071c2d'),'Deprecated lime/navy design tokens found');
+console.log('Brand, offer order, domain handoff and approved features verified');

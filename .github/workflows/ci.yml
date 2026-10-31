@@ -1,7 +1,7 @@
 name: Validate redesign
 on:
   push:
-    branches: [feat/hostamble-astro-redesign, main]
+    branches: [feat/hostamble-astro-redesign, feat/approved-brand-correction, main]
   pull_request:
     branches: [main]
 permissions:

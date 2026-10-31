@@ -1,30 +1,50 @@
 ---
-const {compact = false} = Astro.props;
+import catalog from '../data/catalog.json';
+import {formatINR} from '../lib/pricing.mjs';
+interface Props { compact?: boolean; }
+const {compact=false} = Astro.props as Props;
+const inputId=compact?'domain-compact-query':'domain-query';
+const priceCards=catalog.domains;
 ---
-<section class:list={['domain-section', compact && 'domain-compact']} id="domain-search">
+<section class:list={['domain-section',compact && 'domain-compact']} id="domain-search" aria-labelledby={compact ? 'domain-heading-compact' : 'domain-heading'}>
   <div class="container">
     <div class="domain-panel">
       <div class="domain-heading">
-        <span class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR NAME</span>
-        <h2>That perfect domain? <em>It's out there.</em></h2>
-        <p>A memorable name makes a good first impression. Search yours and continue to Hostamble's live domain checker.</p>
+        <span class="eyebrow">FIND YOUR PLACE ONLINE</span>
+        <h2 id={compact ? 'domain-heading-compact' : 'domain-heading'}>Your next big move <em>starts with a name.</em></h2>
+        <p>Search your preferred domain, then check live availability with Hostamble. A name is only registered after you complete an order.</p>
       </div>
-      <form class="domain-form" action="https://hostamble.com/dash/cart.php" method="GET" role="search" aria-label="Find a domain">
-        <input type="hidden" name="a" value="add" />
-        <input type="hidden" name="domain" value="register" />
-        <label class="sr-only" for={compact ? 'domain-compact-query' : 'domain-query'}>Domain name</label>
-        <span aria-hidden="true" class="domain-magnifier">⌕</span>
-        <input id={compact ? 'domain-compact-query' : 'domain-query'} name="query" type="text" placeholder="yourbigidea.com" required autocomplete="off" spellcheck="false" maxlength="253" />
-        <button type="submit" class="button button-dark">Search domain <span aria-hidden="true">↗</span></button>
+      <form class="domain-form" action={catalog.checkout.domainSearch} method="GET" role="search" aria-label="Search domain names">
+        <input type="hidden" name="a" value="add"/>
+        <input type="hidden" name="domain" value="register"/>
+        <label class="sr-only" for={inputId}>Your preferred domain name</label>
+        <span class="domain-magnifier" aria-hidden="true">⌕</span>
+        <input id={inputId} name="query" type="text" placeholder="yourname.com" required autocomplete="off" spellcheck="false" maxlength="253"/>
+        <button class="button button-dark" type="submit">Check availability <span aria-hidden="true">↗</span></button>
       </form>
-      <p class="domain-disclaimer">Live availability and final prices are checked securely in the client area.</p>
-      <div class="domain-ticker" data-ticker>
-        <div class="ticker-runner">
-          <span class="ticker-set"><b>.com</b><span>the classic</span><b>.in</b><span>made for India</span><b>.online</b><span>your digital home</span><b>.site</b><span>your own space</span></span>
-          <span class="ticker-set" aria-hidden="true" inert><b>.com</b><span>the classic</span><b>.in</b><span>made for India</span><b>.online</b><span>your digital home</span><b>.site</b><span>your own space</span></span>
+      <p class="domain-disclaimer">Indicative registration and annual renewal rates below were observed on 31 October 2026. Check current prices before ordering.</p>
+      <div class="domain-ticker" data-ticker aria-label="Domain registration and renewal price cards">
+        <div class="domain-ticker-head"><span>POPULAR EXTENSIONS</span><button type="button" data-ticker-toggle aria-label="Pause domain price movement">Pause motion</button></div>
+        <div class="domain-ticker-viewport">
+          <div class="ticker-runner">
+            <div class="ticker-set">
+              {priceCards.map(domain => <button type="button" class="domain-price-card" data-extension={domain.tld} aria-label={'Use '+domain.tld+' for my search'}>
+                <span class="domain-card-name">{domain.tld}<span aria-hidden="true">↗</span></span>
+                <span class="domain-card-row">First year <strong data-domain-money={domain.registerPaise}>{formatINR(domain.registerPaise)}</strong></span>
+                <span class="domain-card-row">Renewal / year <strong data-domain-money={domain.renewPaise}>{formatINR(domain.renewPaise)}</strong></span>
+              </button>)}
+            </div>
+            <div class="ticker-set" aria-hidden="true" inert>
+              {priceCards.map(domain => <div class="domain-price-card">
+                <span class="domain-card-name">{domain.tld}<span aria-hidden="true">↗</span></span>
+                <span class="domain-card-row">First year <strong data-domain-money={domain.registerPaise}>{formatINR(domain.registerPaise)}</strong></span>
+                <span class="domain-card-row">Renewal / year <strong data-domain-money={domain.renewPaise}>{formatINR(domain.renewPaise)}</strong></span>
+              </div>)}
+            </div>
+          </div>
         </div>
-        <button type="button" data-ticker-toggle aria-label="Pause domain ticker">Pause motion</button>
       </div>
+      <p class="domain-disclaimer" data-domain-currency-note>Prices shown in INR. Check current registration and renewal charges before purchase.</p>
     </div>
   </div>
 </section>

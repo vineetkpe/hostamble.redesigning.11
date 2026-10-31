@@ -42,3 +42,14 @@ This file is internal workflow documentation and should **not** be exposed as pu
 ## Source checks
 
 Consult `docs/source-notes.md` for where provisional values came from. Recheck all commercial facts on launch day.
+
+## Approved visual correction — remaining verification
+
+- [ ] The supplied Open Waypoint SVG is now used consistently; obtain the missing original concept HTML/CSS and brand guide for final pixel-level review (they were not attached to this repository).
+- [ ] Approved display fonts are loaded from Google Fonts; obtain original bundled licensed font files if local hosting is required.
+- [ ] Confirm exact eligibility, registration duration, renewals and exclusions for the owner-approved free .us.cc domain with six-month hosting. The banner selects semiannual totals but does not promise WHMCS will auto-apply an unverified offer.
+- [ ] Verify actual plan-ID/deep-link and four-cycle agreement with live WHMCS; do not silently correct the WordPress Growth annual discrepancy.
+- [ ] Recheck domain registration/renewal snapshot (31 Oct 2026) before production launch.
+- [ ] Confirm any specific chat and WhatsApp destination URLs; do not invent URLs.
+- [ ] Browser check for 320/375/768/1024/1440 px, keyboard, native domain handoff, and reduced-motion; static build alone does not establish WCAG compliance.
+- [ ] Inspect public staging/production indexing; the default preview build is deliberately noindex.
