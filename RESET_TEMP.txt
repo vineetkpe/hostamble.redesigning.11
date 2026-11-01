@@ -1,0 +1,1 @@
+Temporary file for generating a genuinely empty Git tree.
