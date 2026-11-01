@@ -1,9 +1,0 @@
----
-import {catalog,inr} from '../lib/pricing.mjs';
----
-<section class="aceorbit-service ace-service-area ace-section-gap bg-color-white hostamble-content" aria-labelledby="domain-rate-heading">
- <div class="container"><div class="section-title text-center"><span class="pre-title">Domain registration and renewal</span><h2 class="title" id="domain-rate-heading">Compare extension prices</h2></div>
- <div class="table-responsive"><table class="table table-striped"><thead><tr><th scope="col">Extension</th><th scope="col">First year</th><th scope="col">Annual renewal</th><th scope="col">Registration period</th></tr></thead><tbody>{catalog.domainPrices.map(domain=><tr><th scope="row">{domain.tld}</th><td>{inr(domain.registrationPaise)}</td><td>{inr(domain.renewalPaise)}</td><td>{domain.years} year</td></tr>)}</tbody></table></div>
- <p class="description">Published INR rates may change. Taxes, premium-domain charges, availability and final registration or renewal totals must be checked before payment.</p>
- <a class="ace-btn btn-secondary" href={catalog.domainPricesSource}>See live domain pricing</a></div>
-</section>

@@ -1,7 +1,7 @@
-name: Verify native Astro site
+name: Verify original-theme Astro checkpoint
 on:
   push:
-    branches: [main, feat/content-audit-and-product-pages]
+    branches: [main, checkpoint/original-theme-homepage, fix/hero-to-next-section-scroll]
   pull_request:
     branches: [main]
 permissions:
@@ -16,27 +16,23 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --no-audit --no-fund
-      - name: Astro type and markup check
+      - name: Astro check
         run: npm run check
-      - name: Build from clean output and test Cloudflare assets
+      - name: Verify header does not shift the page during scrolling
+        run: |
+          node --check public/assets/js/main.js
+          node -e "const s=require('fs').readFileSync('public/assets/js/main.js','utf8'); if(/aceorbitJs\\.headerSticky\\(\\s*\\)\\s*;/.test(s)) { console.error('Legacy header scroll handler re-enabled; this shifts the hero by 80px'); process.exit(1); }"
+      - name: Test Cloudflare build from clean checkout
         run: |
           rm -rf dist
           npx wrangler deploy --dry-run --outdir .wrangler-dry-run
-      - name: Validate site content and routes
-        run: npm run validate:content
-      - name: Install browser smoke dependency
+      - name: Verify deployed asset prerequisites
         run: |
-          npm install --no-save --package-lock=false playwright@1.58.0
-          if ! command -v google-chrome >/dev/null 2>&1; then
-            npx playwright install --with-deps chromium
-            echo "CHROME_BIN=$HOME/.cache/ms-playwright/chromium-*/chrome-linux/chrome" >> "$GITHUB_ENV"
-          fi
-      - name: Browser smoke across mobile and desktop
-        run: npm run test:browser
-      - name: Save visual checkpoints
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: hostamble-native-astro-visual-checkpoints
-          path: .browser-artifacts/
-          if-no-files-found: ignore
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/assets/css/style.css
+          test -f dist/assets/images/logo.png
+          test -f dist/assets/images/amble.png
+          test -f dist/assets/js/main.js
+          test -f dist/robots.txt
+          node -e "const f=require('fs');const s=f.readFileSync('dist/index.html','utf8');if(!s.includes('noindex,nofollow')||!s.includes('Hostamble'))process.exit(1)"

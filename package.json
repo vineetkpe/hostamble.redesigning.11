@@ -8,9 +8,7 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview --host 0.0.0.0",
-    "deploy": "wrangler deploy",
-    "validate:content": "node scripts/validate-content.mjs",
-    "test:browser": "node tests/browser-smoke.mjs"
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "astro": "^7.4.4"

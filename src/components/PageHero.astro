@@ -1,5 +1,0 @@
----
-interface Props { title:string; eyebrow?:string; description:string; image?:string; }
-const {title,eyebrow='HOSTAMBLE',description,image='/assets/images/banner06.png'}=Astro.props;
----
-<div class="slider-area banner banner-style-two bg-image d-flex align-items-center hostamble-content"><div class="container"><div class="row g-5 align-items-center"><div class="col-lg-6 col-md-12"><div class="inner"><div class="content"><span class="pre-title">{eyebrow}</span><h1 class="title">{title}</h1><p class="description">{description}</p></div></div></div><div class="col-lg-6"><div class="banner-thumbnail"><img class="img-thumb" src={image} alt="" loading="lazy"/></div></div></div></div></div>
