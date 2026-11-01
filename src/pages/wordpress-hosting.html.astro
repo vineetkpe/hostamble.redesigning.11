@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PricingGrid from '../components/PricingGrid.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import FAQs from '../components/FAQs.astro';
+import {baseFaqs} from '../data/content.mjs';
+---
+<SiteLayout title="WordPress Hosting | NVMe SSD & LiteSpeed | Hostamble" description="Host WordPress using NVMe SSD, LiteSpeed, SSL, cPanel and Imunify360 with daily JetBackup backups retained for three days." canonicalPath="/wordpress-hosting.html">
+<PageHero title="WordPress Hosting for your site" eyebrow="WORDPRESS HOSTING" description="Write, publish and manage your WordPress website using the same confirmed hosting stack as Shared Hosting." />
+<PricingGrid family="wordpress" />
+<FeatureGrid title="A dependable foundation for WordPress" />
+<section class="ace-services-area bg-image ace-section-gap hostamble-content"><div class="container"><div class="section-title text-center"><span class="pre-title">WordPress essentials</span><h2 class="title">Build and publish with WordPress</h2></div><div class="row g-5"><div class="col-lg-4"><h3>WordPress installation</h3><p>WordPress installation is available. Use WordPress to create pages and publish blog posts.</p></div><div class="col-lg-4"><h3>Same service, different focus</h3><p>WordPress Hosting uses the same underlying service as Shared Hosting. We do not claim separate managed features or resources.</p></div><div class="col-lg-4"><h3>Migration and recovery</h3><p>Eligible cPanel-to-cPanel migration is free. Daily JetBackup backups are retained for the last three days.</p></div></div><p>Seven-day money-back guarantee on annual hosting plans. <a href="/refund-and-cancellation-policy.html">Read the refund policy</a> and verify plan terms at checkout.</p></div></section>
+<ContactCTA />
+<FAQs questions={baseFaqs} title="WordPress Hosting FAQs" />
+</SiteLayout>

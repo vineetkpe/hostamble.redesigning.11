@@ -1,5 +1,106 @@
 ---
-// Bundle the preserved original fragment at build time (no runtime file reads).
-import originalHeader from '../fragments/header.html?raw';
+// Original AceOrbit theme header, migrated to native Astro markup.
 ---
-<Fragment set:html={originalHeader} />
+<header class="ace-header header-sticky header-transparent header-style-one header-default">
+<div class="row align-items-center">
+<div class="col-lg-4 col-xl-3 col-md-6 col-6">
+<div class="logo">
+<a href="/">
+<img alt="Site Logo" class="logo-light" src="/assets/images/logo.png"/>
+</a>
+</div>
+</div>
+<div class="col-lg-6 d-none d-xl-block">
+<nav class="mainmenu-nav d-none d-lg-block">
+<ul class="mainmenu">
+<li class="mainmenu"><a href="/">Home</a></li>
+<li class="has-droupdown"><a href="/contacts.html">Domain</a>
+<ul class="submenu">
+<li><a href="/domain-search.html">Domain Search</a></li>
+<li><a href="/transfer-domain.html">Domain Transfer</a></li>
+<li><a href="https://hostamble.com/dash/index.php/domain/pricing">All Domain
+                                            Pricing</a></li>
+</ul>
+</li>
+<li class="has-droupdown"><a href="/contacts.html">Hosting</a>
+<ul class="submenu">
+<li><a href="/shared-hosting.html">Shared Hosting</a></li>
+<li><a href="/wordpress-hosting.html">WordPress Hosting</a></li><li><a href="/business-email.html">Business Email</a></li><li><a href="/vps-server.html">VPS Hosting</a></li>
+</ul>
+</li>
+<li class="has-droupdown"><a href="/contacts.html">Pages</a>
+<ul class="submenu">
+<li><a href="/about-us.html">About Us</a></li>
+<li class="has-droupdown"><a href="/contacts.html">Company</a>
+<ul class="submenu">
+<li><a href="/contacts.html">Contact Us</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class="col-lg-8 col-xl-3 col-md-6 col-6">
+<div class="header-right d-flex justify-content-end">
+<div class="header-menu-bar">
+<!-- For larger screens, show "Login / Register" text -->
+<div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5">
+<a class="ace-btn btn-medium left-icon header-button" href="https://hostamble.com/dash/clientarea.php">
+<i class="ri-user-line"></i>Login / Register
+                                </a>
+</div>
+<!-- For mobile devices, show only the icon -->
+<div class="quote-icon quote-user d-block d-md-none ml--15 ml_sm--5">
+<a class="white-box-icon" href="https://hostamble.com/dash/clientarea.php">
+<i class="ri-user-line"></i>
+</a>
+</div>
+</div>
+<div class="mobile-menu-bar ml--15 ml_sm--5 d-block d-xl-none">
+<div class="hamberger">
+<button class="white-box-icon hamberger-button header-menu">
+<i class="ri-menu-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="popup-mobile-menu">
+<div class="inner">
+<div class="header-top">
+<div class="logo"><a href="/"><img alt="Site Logo" src="/assets/images/logo.png"/> </a>
+</div>
+<div class="close-menu"><button class="close-button"></button></div>
+</div>
+<ul class="mainmenu">
+<li><a href="/">Home</a>
+</li>
+<li class="has-droupdown"><a href="/contacts.html">Domain</a>
+<ul class="submenu">
+<li><a href="/domain-search.html">Domain Search</a></li>
+<li><a href="/transfer-domain.html">Domain Transfer</a></li>
+<li><a href="https://hostamble.com/dash/index.php/domain/pricing">All Domain Price</a></li>
+</ul>
+</li>
+<li class="has-droupdown"><a href="/contacts.html">Hosting</a>
+<ul class="submenu">
+<li><a href="/shared-hosting.html">Shared Hosting</a></li>
+<li><a href="/wordpress-hosting.html">Wordpress Hosting</a></li><li><a href="/business-email.html">Business Email</a></li><li><a href="/vps-server.html">VPS Hosting</a></li>
+</ul>
+</li>
+<li class="has-droupdown"><a href="/contacts.html">Pages</a>
+<ul class="submenu">
+<li><a href="/about-us.html">About us</a></li>
+<li class="has-droupdown"><a href="/contacts.html">Company</a>
+<ul class="submenu">
+<li><a href="/contacts.html">Contact Us</a></li>
+</ul>
+</li></ul>
+</li>
+<li><a href="/shared-hosting.html#plans">Offer</a></li>
+</ul>
+</div>
+</div>
