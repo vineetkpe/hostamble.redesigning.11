@@ -18,7 +18,7 @@ try{
   for(const path of pages){
    const resp=await page.goto(base+path,{waitUntil:'domcontentloaded'});
    assert.equal(resp?.status(),200,`Route ${path} failed`);
-   const state=await page.evaluate(()=>({h1:document.querySelectorAll('h1').length,scrollWidth:document.documentElement.scrollWidth,windowWidth:innerWidth,rootOverflow:getComputedStyle(document.documentElement).overflowX}));
+   const state=await page.evaluate(()=>({h1:document.querySelectorAll('h1').length,scrollWidth:document.documentElement.scrollWidth,windowWidth:innerWidth,rootOverflow:getComputedStyle(document.documentElement).overflowX,offenders:[...document.querySelectorAll('body *')].map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,cls:typeof el.className==='string'?el.className.slice(0,65):'',left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)}}).filter(el=>el.right>innerWidth+3&&el.left<innerWidth).sort((a,b)=>b.right-a.right).slice(0,12)}));
    assert.equal(state.h1,1,`${path} must have one H1`);
    assert(state.scrollWidth<=state.windowWidth+3||state.rootOverflow==='clip',`${path} horizontally overflows at ${width}: ${JSON.stringify(state)}`);
   }
