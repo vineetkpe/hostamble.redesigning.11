@@ -25,10 +25,29 @@ try{
  }
  await page.setViewportSize({width:1440,height:900});
  await page.goto(base+'/');
- const internal=await page.locator('a[href]').evaluateAll(as=>as.map(a=>a.getAttribute('href')).filter(h=>h?.startsWith('/')&&!h.startsWith('/assets/')));
- for(const url of new Set(internal)){
-  const response=await fetch(base+url.split('#')[0]);assert.equal(response.status,200,`Broken homepage internal link ${url}`);
+ const internal=new Set();
+ for(const route of pages){
+  await page.goto(base+route,{waitUntil:'domcontentloaded'});
+  const targets=await page.evaluate(()=>({
+   links:[...document.querySelectorAll('a[href]')].map(a=>({href:a.getAttribute('href'),nav:!!a.closest('header,footer,.popup-mobile-menu')})),
+   forms:[...document.querySelectorAll('form')].map(f=>({action:f.getAttribute('action')||'',method:f.method}))
+  }));
+  for(const link of targets.links){
+   if(link.nav) {
+    assert(link.href!=='#' && !link.href?.startsWith('javascript:'),`Placeholder nav link ${route}: ${link.href}`);
+    assert(!link.href?.startsWith('https://www.hostamble.com/'),`Nav links must stay on Astro: ${route}: ${link.href}`);
+   }
+   if(link.href?.startsWith('/')&&!link.href.startsWith('/assets/'))internal.add(link.href.split('#')[0]||'/');
+  }
+  for(const form of targets.forms){
+   assert(form.action.startsWith('https://hostamble.com/dash/'),`Unsupported form action on ${route}: ${form.action}`);
+   assert.equal(form.method.toUpperCase(),'GET',`Unexpected form submission method on ${route}`);
+  }
  }
+ for(const url of internal){
+  const response=await fetch(base+url);assert.equal(response.status,200,`Broken internal link ${url}`);
+ }
+ await page.goto(base+'/');
  const cycles=page.locator('[data-billing-cycle]');assert.equal(await cycles.count(),4);
  await page.locator('[data-billing-cycle="semiannual"]').click();
  assert.equal(await page.locator('[data-billing-cycle="semiannual"]').getAttribute('aria-pressed'),'true');
