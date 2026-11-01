@@ -1,7 +1,7 @@
 name: Verify native Astro site
 on:
   push:
-    branches: [main, feat/content-audit-and-product-pages]
+    branches: [main, feat/faithful-original-all-pages]
   pull_request:
     branches: [main]
 permissions:
@@ -33,10 +33,10 @@ jobs:
           fi
       - name: Browser smoke across mobile and desktop
         run: npm run test:browser
-      - name: Save visual checkpoints
+      - name: Save replica screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: hostamble-native-astro-visual-checkpoints
+          name: original-hostamble-all-pages
           path: .browser-artifacts/
           if-no-files-found: ignore
