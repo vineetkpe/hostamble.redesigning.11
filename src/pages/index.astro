@@ -237,36 +237,16 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 <div class="pricing-billing-duration">
 <ul>
 <li class="nav-item">
-<button class="nav-link active" id="monthly-plan-btn" onclick="
-                        document.querySelectorAll('.pricing-billing-duration .nav-link')
-                        .forEach(btn=&gt;btn.classList.remove('active'));
-                        this.classList.add('active');
-                        updatePricing('monthly');
-                        " type="button">Monthly</button>
+<button class="nav-link active" id="monthly-plan-btn" type="button">Monthly</button>
 </li>
 <li class="nav-item">
-<button class="nav-link" id="quarterly-plan-btn" onclick="
-                        document.querySelectorAll('.pricing-billing-duration .nav-link')
-                        .forEach(btn=&gt;btn.classList.remove('active'));
-                        this.classList.add('active');
-                        updatePricing('quarterly');
-                        " type="button">Quarterly</button>
+<button class="nav-link" id="quarterly-plan-btn" type="button">Quarterly</button>
 </li>
 <li class="nav-item">
-<button class="nav-link" id="semiannual-plan-btn" onclick="
-                        document.querySelectorAll('.pricing-billing-duration .nav-link')
-                        .forEach(btn=&gt;btn.classList.remove('active'));
-                        this.classList.add('active');
-                        updatePricing('semiannual');
-                        " type="button">Semi-Annual</button>
+<button class="nav-link" id="semiannual-plan-btn" type="button">Semi-Annual</button>
 </li>
 <li class="nav-item">
-<button class="nav-link" id="annual-plan-btn" onclick="
-                        document.querySelectorAll('.pricing-billing-duration .nav-link')
-                        .forEach(btn=&gt;btn.classList.remove('active'));
-                        this.classList.add('active');
-                        updatePricing('annual');
-                        " type="button">Annual</button>
+<button class="nav-link" id="annual-plan-btn" type="button">Annual</button>
 </li>
 </ul>
 </div>
