@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://www.hostamble.com',
   output: 'static',
+  site: 'https://www.hostamble.com',
   trailingSlash: 'never',
   build: { format: 'directory' }
 });

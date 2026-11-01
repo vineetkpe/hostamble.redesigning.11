@@ -1,11 +1,11 @@
-name: Validate redesign
+name: Clean starter validation
 on:
   push:
-    branches: [feat/hostamble-astro-redesign, fix/hosting-content-offer, fix/original-hostamble-brand-colors, fix/lighter-layered-hostamble-backgrounds, main]
+    branches: [main, chore/restart-clean-slate]
   pull_request:
     branches: [main]
 permissions:
-  contents: write
+  contents: read
 jobs:
   verify:
     runs-on: ubuntu-24.04
@@ -14,51 +14,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci --no-audit --no-fund
-          else
-            npm install --no-audit --no-fund
-          fi
-      - name: Validate catalog and logic
-        run: npm run validate:catalog && npm test
-      - name: Astro checks
+          cache: npm
+      - name: Install
+        run: npm ci --no-audit --no-fund
+      - name: Astro check
         run: npm run check
-      # Simulate Cloudflare's exact deploy command from a fresh checkout:
-      # dist/ must NOT exist before Wrangler invokes its configured build step.
-      - name: Ensure no prebuilt dist exists
+      - name: Cloudflare dry run, starting without dist
         run: |
-          node -e "require('node:fs').rmSync('dist', { recursive: true, force: true })"
-      - name: Test Wrangler deploy from clean checkout (runs Astro build)
-        run: npx wrangler deploy --dry-run --outdir .wrangler-dry-run
-        env:
-          PUBLIC_SITE_STAGE: preview
-      - name: Verify built files and preview protections
-        run: npm run verify:build
-      - name: Install browser smoke dependencies
+          rm -rf dist
+          npx wrangler deploy --dry-run --outdir .wrangler-dry-run
+      - name: Verify clean starter
         run: |
-          npm install --no-save --package-lock=false playwright@1.58.0
-          if ! command -v google-chrome >/dev/null 2>&1; then
-            npx playwright install --with-deps chromium
-            echo "CHROME_BIN=$HOME/.cache/ms-playwright/chromium-*/chrome-linux/chrome" >> "$GITHUB_ENV"
-          fi
-      - name: Browser and mobile smoke tests
-        run: node tests/browser-smoke.mjs
-      - name: Keep browser screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: hostamble-browser-review
-          path: .browser-artifacts/
-          if-no-files-found: ignore
-      - name: Commit resolved dependency lockfile (feature branch)
-        if: github.event_name == 'push' && github.ref_name == 'feat/hostamble-astro-redesign'
-        run: |
-          if ! git ls-files --error-unmatch package-lock.json >/dev/null 2>&1; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add package-lock.json
-            git commit -m "chore: commit dependency lockfile [skip ci]"
-            git push origin HEAD:feat/hostamble-astro-redesign
-          fi
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/robots.txt
+          test -f dist/_headers
+          node -e "const fs = require('node:fs');const s=fs.readFileSync('dist/index.html','utf8');if(!s.includes('noindex, nofollow')||s.includes('data-pricing')||s.includes('domain-ticker'))process.exit(1)"
