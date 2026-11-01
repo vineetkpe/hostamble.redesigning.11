@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import {readFileSync} from 'node:fs';
+import {readFileSync,mkdirSync} from 'node:fs';
 const base='http://127.0.0.1:4338';
 const pages=['/','/shared-hosting.html','/wordpress-hosting.html','/domain-search.html','/transfer-domain.html','/about-us.html','/contacts.html','/legal-agreement.html','/privacy-policy.html','/refund-and-cancellation-policy.html','/business-email.html','/vps-server.html','/login.html','/register.html'];
 const catalog=JSON.parse(readFileSync('src/data/pricing.json','utf8'));
@@ -52,5 +52,14 @@ try{
  await page.keyboard.press('Escape');
  assert(!(await menu.evaluate(el=>el.classList.contains('active'))),'Mobile menu Esc close failed');
  await page.emulateMedia({reducedMotion:'reduce'});
+ mkdirSync('.browser-artifacts',{recursive:true});
+ for(const viewport of [375,1440]){
+  await page.setViewportSize({width:viewport,height:900});
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  for(const route of ['/','/shared-hosting.html','/wordpress-hosting.html']){
+   await page.goto(base+route,{waitUntil:'load'});
+   await page.screenshot({path:'.browser-artifacts/'+(route==='/'?'home':route.slice(1).replace('.html',''))+'-'+viewport+'.png',fullPage:true});
+  }
+ }
  console.log(`Browser smoke passed: ${pages.length} routes, five viewports, navigation, mobile menu, FAQs, billing selection and domain form`);
 } finally {if(browser)await browser.close();server.kill('SIGTERM');}

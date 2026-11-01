@@ -33,3 +33,10 @@ jobs:
           fi
       - name: Browser smoke across mobile and desktop
         run: npm run test:browser
+      - name: Save visual checkpoints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hostamble-native-astro-visual-checkpoints
+          path: .browser-artifacts/
+          if-no-files-found: ignore
