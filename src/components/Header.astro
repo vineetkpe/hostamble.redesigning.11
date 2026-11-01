@@ -1,5 +1,5 @@
 ---
-import { readFileSync } from 'node:fs';
-const originalHeader = readFileSync(new URL('../fragments/header.html', import.meta.url), 'utf8');
+// Bundle the preserved original fragment at build time (no runtime file reads).
+import originalHeader from '../fragments/header.html?raw';
 ---
 <Fragment set:html={originalHeader} />

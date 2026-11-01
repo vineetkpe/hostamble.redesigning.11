@@ -1,5 +1,5 @@
 ---
-import { readFileSync } from 'node:fs';
-const originalFooter = readFileSync(new URL('../fragments/footer.html', import.meta.url), 'utf8');
+// Bundle the preserved original fragment at build time (no runtime file reads).
+import originalFooter from '../fragments/footer.html?raw';
 ---
 <Fragment set:html={originalFooter} />
