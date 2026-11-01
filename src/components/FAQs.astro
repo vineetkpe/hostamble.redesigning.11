@@ -1,0 +1,5 @@
+---
+interface Props { questions: {q:string;a:string}[]; title?:string; }
+const {questions,title='Frequently asked questions'}=Astro.props;
+---
+<section class="aceorbit-progress ace-service-area ace-section-gap bg-image hostamble-content" aria-label={title}><div class="container"><div class="section-title text-center"><span class="pre-title">FAQs</span><h2 class="title">{title}</h2></div><div class="row justify-content-center"><div class="col-lg-9">{questions.map(x=><details><summary>{x.q}</summary><p class="description">{x.a}</p></details>)}</div></div></div></section>

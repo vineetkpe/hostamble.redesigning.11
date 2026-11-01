@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PricingGrid from '../components/PricingGrid.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import FAQs from '../components/FAQs.astro';
+import {baseFaqs} from '../data/content.mjs';
+---
+<SiteLayout title="Shared Hosting | NVMe SSD, LiteSpeed & cPanel | Hostamble" description="Shared Hosting with NVMe SSD storage, LiteSpeed, SSL, cPanel, Imunify360 and daily JetBackup backups with three-day retention." canonicalPath="/shared-hosting.html">
+<PageHero title="Shared Hosting for your website" eyebrow="SHARED HOSTING" description="Host blogs, personal websites and smaller business sites with NVMe SSD storage, LiteSpeed, cPanel and SSL." />
+<PricingGrid family="shared" />
+<FeatureGrid />
+<section class="ace-services-area bg-image ace-section-gap hostamble-content"><div class="container"><div class="section-title text-center"><span class="pre-title">Getting started</span><h2 class="title">What to check before choosing a plan</h2></div><div class="row g-5"><div class="col-lg-4"><h3>Website limits</h3><p>Review the number of websites, storage, bandwidth and MySQL databases for the exact package in checkout.</p></div><div class="col-lg-4"><h3>Billing and renewal</h3><p>Choose monthly, quarterly, six-month or annual billing. Confirm the total due today, tax and renewal price before payment.</p></div><div class="col-lg-4"><h3>Moving your site</h3><p>Free cPanel-to-cPanel migration is available for eligible accounts. Contact support before making the move.</p></div></div><p>Seven-day money-back guarantee on annual hosting plans. <a href="/refund-and-cancellation-policy.html">Read the refund and cancellation policy</a>.</p></div></section>
+<ContactCTA />
+<FAQs questions={baseFaqs} title="Shared Hosting FAQs" />
+</SiteLayout>

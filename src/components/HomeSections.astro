@@ -1,5 +1,23 @@
 ---
-// Bundle the preserved original fragment at build time (no runtime file reads).
-import homeSections from '../fragments/home.html?raw';
+import HomeHero from './HomeHero.astro';
+import DomainSearch from './DomainSearch.astro';
+import PricingGrid from './PricingGrid.astro';
+import FeatureGrid from './FeatureGrid.astro';
+import ContactCTA from './ContactCTA.astro';
+import FAQs from './FAQs.astro';
+const questions=[
+{q:'What makes Hostamble suitable for WordPress?',a:'WordPress can be installed on the same underlying hosting service used by Shared Hosting, with NVMe SSD, LiteSpeed, cPanel, SSL and Imunify360.'},
+{q:'How long are backups kept?',a:'Automatic daily JetBackup backups are retained for the most recent three days on Shared and WordPress hosting.'},
+{q:'Is migration free?',a:'Free cPanel-to-cPanel migration is available to compatible accounts. Contact support to check eligibility before moving.'},
+{q:'Who can I contact for help?',a:'Live chat and WhatsApp: Monday–Saturday, 9 AM–8 PM IST. Submit tickets anytime; a reply is provided within 12 hours.'},
+{q:'Do annual plans include the free .us.cc domain?',a:'The advertised free .us.cc domain offer applies to semiannual (six-month) hosting. Exact product eligibility, registration period and renewal charges need confirmation.'}
+];
 ---
-<Fragment set:html={homeSections} />
+<HomeHero />
+<div class="slider-area banner d-flex align-items-center hostamble-content"><div class="container"><div class="row"><div class="col-lg-12"><div class="top-bars"><h2>Get a free .us.cc domain with semiannual hosting.</h2><a class="ace-btn" href="/shared-hosting.html#plans">See six-month hosting options</a></div></div></div><div class="row justify-content-center"><div class="col-lg-8"><h2 class="mt--40">Get your domain name</h2><p class="description">Check availability with our domain registration system, and compare first-year and renewal rates before ordering.</p><DomainSearch /><a href="/domain-search.html">Explore domain registration and renewal prices</a></div><div class="col-lg-4"><h2 class="mt--40">Choose your hosting</h2><div class="items-contents"><h3>Shared Hosting</h3><p class="description">For personal sites, blogs and small businesses.</p><a class="ace-btn btn-secondary btn-small" href="/shared-hosting.html">Explore Shared Hosting</a></div><div class="items-contents"><h3>WordPress Hosting</h3><p class="description">The same hosting foundation for people publishing with WordPress.</p><a class="ace-btn btn-secondary btn-small" href="/wordpress-hosting.html">Explore WordPress Hosting</a></div></div></div></div></div>
+<PricingGrid />
+<FeatureGrid />
+<div class="ace-workshop-area aceorbit-home-video workshop-style-1 ace-section-gap bg-image bg-color-primary"><div class="container"><div class="row gy-lg-0 gy-5 row--60 align-items-center"><div class="col-lg-6"><div class="workshop-inner"><div class="section-title text-white"><span class="pre-title">Getting started</span><h2 class="title">Set up your next website</h2></div><p class="description">Choose hosting, connect a domain, and use cPanel or WordPress to get started. Free cPanel-to-cPanel migration is available for eligible accounts.</p><a class="ace-btn btn-white" href="/contacts.html">Ask about migration</a></div></div><div class="col-lg-6"><div class="thumbnail"><img class="radius-small w-100" src="/assets/images/videopopup.jpg" alt="Website setup illustration" loading="lazy"/></div></div></div></div></div>
+<ContactCTA />
+<section class="ace-testimonial-area aceorbit-testimonial bg-color-white ace-section-gap"><div class="container"><div class="section-title text-center"><span class="pre-title">Independent feedback</span><h2 class="title">See what customers are saying</h2></div><div class="text-center"><a class="ace-btn btn-secondary" href="https://www.trustpilot.com/review/hostamble.com">Read the Hostamble Trustpilot profile</a></div></div></section>
+<FAQs questions={questions}/>

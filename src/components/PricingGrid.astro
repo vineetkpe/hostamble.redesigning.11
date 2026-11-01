@@ -1,0 +1,22 @@
+---
+import { catalog, cycles, inr } from '../lib/pricing.mjs';
+interface Props { family?: 'shared' | 'wordpress'; }
+const {family='shared'} = Astro.props;
+const shared=family==='shared';
+---
+<section class="ace-pricing-area aceorbit-pricing-plan-page ace-section-gap bg-image hostamble-pricing" id="plans" data-hosting-pricing aria-labelledby="hosting-pricing-heading">
+ <div class="container aceorbit-animated-shape">
+  <div class="row g-5 align-items-center"><div class="col-lg-6 col-md-6"><div class="section-title text-start"><span class="pre-title">Hosting plans</span><h2 class="title" id="hosting-pricing-heading">Choose your billing period</h2></div></div>
+   {shared && <div class="col-lg-6 col-md-6"><div class="pricing-billing-duration" role="group" aria-label="Billing period"><ul>{cycles.map((cycle,i)=><li class="nav-item"><button class:list={['nav-link',i===0&&'active']} type="button" data-billing-cycle={cycle.key} aria-pressed={i===0}>{cycle.label}</button></li>)}</ul></div></div>}
+  </div>
+  <p class="legacy-pricing-note" role="note">Plan prices, limits and renewal totals are being reconciled with checkout. All orders are charged in INR. Confirm current totals, taxes and renewal terms in the client area before ordering.</p>
+  {shared ? <>
+   <div class="row g-5 mt--20">{catalog.sharedPlans.map((plan,i)=><div class="col-xl-4 col-lg-6 col-md-6 col-12"><article class:list={['pricing-table',i===1&&'active']}>
+    <div class="pricing-header">{i===1&&<div class="ace-badge"><span>Common choice</span></div>}<h3 class="title">{plan.name}</h3><div class="price-wrap"><div><span class="amount" data-prices={JSON.stringify(plan.pricesPaise)} data-hosting-price>{inr(plan.pricesPaise.monthly)}</span></div><span class="duration" data-pricing-period>Monthly billing · total due</span></div></div>
+    <div class="pricing-body"><ul class="list-item"><li>NVMe SSD storage</li><li>LiteSpeed</li><li>SSL and cPanel</li><li>Imunify360 security</li><li>Daily JetBackup · last 3 days</li><li>Free cPanel-to-cPanel migration</li><li>WordPress installation available</li></ul><p class="description">Plan-specific websites, storage, bandwidth and database limits: confirm at checkout.</p></div>
+    <div class="pricing-btn"><a class="ace-btn btn-dark" href={plan.checkoutUrl}>Review {plan.name} in checkout</a></div>
+   </article></div>)}</div>
+   <p class="description" style="margin-top:25px">Get a free .us.cc domain with semiannual hosting. Exact qualifying plans and domain renewal terms require confirmation.</p>
+  </> : <div class="row g-5"><div class="col-12"><div class="pricing-table"><div class="pricing-header"><h3 class="title">WordPress Hosting</h3></div><div class="pricing-body"><p>WordPress uses the same underlying hosting service as Shared Hosting, with WordPress installation available. Review available packages, resources and current billing totals in checkout.</p></div><div class="pricing-btn"><a class="ace-btn btn-dark" href={catalog.wordpressCategoryUrl}>View WordPress packages</a></div></div></div></div>}
+ </div>
+</section>
