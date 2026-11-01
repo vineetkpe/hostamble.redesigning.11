@@ -20,8 +20,7 @@ for(const name of expected){
  assert(page.s.includes('<h1'),'H1 missing '+name);
  assert(page.s.includes('rel="canonical"'),'Canonical missing '+name);
 }
-const allPublic=html.map(x=>x.s).join('
-');
+const allPublic=html.map(x=>x.s).join('\n');
 for(const forbidden of ['grows this July','Conatct Now','Get Start Now','Auto Indexing','BitNinja','Meet Our Team','Cloud Hosting','Our Latest News Feed','semi-managed support','javascript:void(Tawk_API']){
  assert(!allPublic.includes(forbidden),'Obsolete text exposed: '+forbidden);
 }
