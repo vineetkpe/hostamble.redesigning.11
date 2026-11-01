@@ -1,14 +1,18 @@
-# Hostamble: native Astro migration (review branch)
+# Hostamble — original theme, all public pages
 
-Native Astro public pages and reusable components preserve the archived AceOrbit theme classes, original stylesheets, illustrations, font/icon files, scripts and brand identity.
+This Astro project reproduces the supplied `3333.zip` website pages using the original AceOrbit/Hostamble CSS, JavaScript, fonts, logo and illustrations. All archived public content is in native `.astro` page files with a shared layout/header/footer.
 
-- Shared components: `src/components/` (header, footer, hero, domain search, pricing grid, features, FAQ, CTA).
-- Public routes: `src/pages/*.astro` (original `.html` URLs retained).
-- Shared data: `src/data/pricing.json` (central INR pricing), `src/data/content.mjs` (support, offer, FAQ and hosting facts).
-- Original CSS and vendor assets remain in `public/assets/` until full browser parity is verified.
-- WHMCS owns accounts, orders, billing, domain purchases, and transfers. Astro does not replace checkout.
-- Current staging output is `noindex`; do not publish to production without owner approval.
+## Pages
 
-Run `npm install`, `npm run check`, `npm run build`, and `npm run validate:content`.
+Homepage, Shared Hosting, WordPress, Domain Registration, Domain Transfer, About, Contact, Terms, Privacy, and Refund & Cancellation. The original Login and Register paths hand off to WHMCS; Business Email and VPS are enquiry-only because the supplied archive did not include original product-detail pages.
 
-See `CONTENT-AUDIT.md` for unresolved business facts and route inventory.
+## Development
+
+`npm install`, `npm run check`, `npm run build`, `npm run preview`.
+
+## Important
+
+- Static marketing site stays `noindex` during review.
+- WHMCS remains authoritative for product IDs, pricing, domain availability, account access and checkout.
+- Original site prices and policies are archival, not commercial verification. See `REPLICATION-AUDIT.md`.
+- The original CSS/JS and images remain; no new visual theme was added.

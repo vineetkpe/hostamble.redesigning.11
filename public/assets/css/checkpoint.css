@@ -4,6 +4,17 @@
 :focus-visible{outline:3px solid #A34D13;outline-offset:3px}
 @media (prefers-reduced-motion: reduce) {html{scroll-behavior:auto!important} *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
-/* Contain original off-canvas decorative pseudo-elements at tablet widths without changing layout. */
-html { overflow-x: clip; }
-@supports not (overflow: clip) { html, body { overflow-x: hidden; } }
+/* Content audit: original visual system and section spacing retained. */
+.hostamble-content .section-title .title {max-width:100%;overflow-wrap:break-word}
+.hostamble-content .content-column {max-width:100%;overflow-wrap:break-word}
+.hostamble-pricing .pricing-billing-duration button[aria-pressed="true"] {outline:2px solid var(--color-primary,#D3751D);outline-offset:2px}
+.hostamble-pricing .price-wrap .amount {font-size:clamp(1.4rem,2vw,2.4rem);line-height:1.3}
+.hostamble-pricing .pricing-table {height:100%}
+.hostamble-content details {border-bottom:1px solid #e3e3e3;padding:12px 0}
+.hostamble-content summary {cursor:pointer;font-weight:700}
+.hostamble-content .policy-copy {overflow-wrap:anywhere}
+@media(max-width:560px) {.hostamble-content .ace-btn{max-width:100%;white-space:normal;overflow-wrap:break-word}.hostamble-pricing .pricing-billing-duration ul{flex-wrap:wrap}.hostamble-content .section-title .title{font-size:clamp(2rem,9vw,3.3rem)}}
+
+/* Archive fidelity: only discreet verification note and accessible billing focus. */
+.hostamble-archive-note,.hostamble-form-handoff {margin:20px auto;max-width:1100px;padding:12px 20px;border-left:3px solid #D3751D;background:#fff9f1;color:#4a351f;font-size:14px;line-height:1.6}
+.pricing-billing-duration .nav-link:focus-visible{outline:3px solid #A34D13;outline-offset:2px}

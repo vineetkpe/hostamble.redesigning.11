@@ -16,9 +16,7 @@
         methods: function (e) {
             aceorbitJs.salActive();
             aceorbitJs.wowActivation();
-            // This legacy handler makes the absolute header static after 250px,
-            // inserting 80px into the page and jolting the hero/next-section transition.
-            // Keep the header positioning stable as the page scrolls.
+            // Keep header positioning stable: old sticky handler shifts the page while scrolling.
             aceorbitJs.popupMobileMenu();
             aceorbitJs.searchPopup();
             aceorbitJs.pricingPlan();
