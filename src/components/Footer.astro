@@ -1,0 +1,5 @@
+---
+import { readFileSync } from 'node:fs';
+const originalFooter = readFileSync(new URL('../fragments/footer.html', import.meta.url), 'utf8');
+---
+<Fragment set:html={originalFooter} />

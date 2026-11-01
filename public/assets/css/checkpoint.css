@@ -1,0 +1,5 @@
+/* Visual checkpoint: original Hostamble theme is in /assets/css/style.css. */
+:root { --color-primary: #D3751D; --color-secondary:#202133; }
+.legacy-pricing-note{max-width:970px;margin:0 auto 1.5rem;padding:.65rem 1rem;border:1px solid #e2c4a9;border-radius:.35rem;background:#fff7ef;color:#63310f;font-size:.9rem;text-align:center}
+:focus-visible{outline:3px solid #A34D13;outline-offset:3px}
+@media (prefers-reduced-motion: reduce) {html{scroll-behavior:auto!important} *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

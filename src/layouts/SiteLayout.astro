@@ -1,0 +1,50 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, 'https://www.hostamble.com').toString();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#202133" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/images/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Hostamble" />
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/remixicon.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/aceorbit-font.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/magnifypopup.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/slick.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/animation.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/custom.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/checkpoint.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+    <div class="rn-progress-parent" aria-hidden="true"><svg class="rn-back-circle svg-inner" height="100%" viewBox="-1 -1 102 102" width="100%"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path></svg></div>
+    <script is:inline src="/assets/js/vendor/jquery.js"></script>
+    <script is:inline src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script is:inline src="/assets/js/vendor/sal.min.js"></script>
+    <script is:inline src="/assets/js/vendor/backtotop.js"></script>
+    <script is:inline src="/assets/js/vendor/magnifypopup.js"></script>
+    <script is:inline src="/assets/js/vendor/slick.js"></script>
+    <script is:inline src="/assets/js/vendor/wow.js"></script>
+    <script is:inline src="/assets/js/main.js"></script>
+    <script is:inline src="/assets/js/checkpoint.js"></script>
+  </body>
+</html>

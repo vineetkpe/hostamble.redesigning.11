@@ -1,0 +1,7 @@
+---
+import { readFileSync } from 'node:fs';
+// First checkpoint: retain the supplied AceOrbit/Hostamble markup exactly in form.
+// After visual approval, convert individual sections into typed Astro components.
+const homeSections = readFileSync(new URL('../fragments/home.html', import.meta.url), 'utf8');
+---
+<Fragment set:html={homeSections} />

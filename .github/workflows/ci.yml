@@ -1,0 +1,34 @@
+name: Verify original-theme Astro checkpoint
+on:
+  push:
+    branches: [main, checkpoint/original-theme-homepage]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Astro check
+        run: npm run check
+      - name: Test Cloudflare build from clean checkout
+        run: |
+          rm -rf dist
+          npx wrangler deploy --dry-run --outdir .wrangler-dry-run
+      - name: Verify deployed asset prerequisites
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/assets/css/style.css
+          test -f dist/assets/images/logo.png
+          test -f dist/assets/images/amble.png
+          test -f dist/assets/js/main.js
+          test -f dist/robots.txt
+          node -e "const f=require('fs');const s=f.readFileSync('dist/index.html','utf8');if(!s.includes('noindex,nofollow')||!s.includes('Hostamble'))process.exit(1)"
